@@ -29,11 +29,11 @@
 								<span class="icon-bar"></span>
 								<span class="icon-bar"></span>
 							</button>
-							<a class="navbar-brand" href="#">Project name</a>
+							<a class="navbar-brand" href="index.jsp">Ivalice Commerce</a>
 						</div>
 						<div id="navbar" class="navbar-collapse collapse">
 							<ul class="nav navbar-nav">
-								<li class="active"><a href="#">Home</a></li>
+								<li class="active"><a href="index.jsp">Accueil</a></li>
 								<li><a href="#about">About</a></li>
 								<li><a href="#contact">Contact</a></li>
 								<li class="dropdown">
@@ -193,7 +193,7 @@
 		<!-- Bootstrap core JavaScript
 	================================================== -->
 	<!-- Placed at the end of the document so the pages load faster -->
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+	<script src="res/js/jquery-1.11.2.js"></script>
 	<script src="res/js/bootstrap.min.js"></script>
 	<!-- Just to make our placeholder images work. Don't actually copy the next line! -->
 	<script src="../../assets/js/vendor/holder.js"></script>
