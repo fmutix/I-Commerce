@@ -1,0 +1,6 @@
+CREATE TABLE Member(
+	Name VARCHAR(20) NOT NULL,
+	Password CHAR(128) NOT NULL,
+	Email VARCHAR(255) NOT NULL,
+	PRIMARY KEY(Email)
+);
