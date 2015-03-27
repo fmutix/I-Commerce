@@ -7,9 +7,9 @@ package src;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
-import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -19,7 +19,7 @@ import java.util.logging.Logger;
  */
 public class DbManager {
     private static Connection DB;
-    private static PreparedStatement STMT;
+    private static Statement STMT;
     private static ResultSet RS;
     
     private static String DB_URL;
@@ -67,5 +67,20 @@ public class DbManager {
             }
         }
         System.out.println("Close OK");
+    }
+    
+    public void insertMember(String name, String password, String email, Boolean guild){
+        String query = "INSERT INTO APP.MEMBER (Name, Password, Email, Guild) VALUES" +
+                "('" + name + "'," + 
+                "'" + password + "'," + 
+                "'" + email + "'," + 
+                guild + ")";
+        try {
+            STMT = DB.createStatement();
+            STMT.executeUpdate(query);
+            System.out.println(query);
+        }catch(SQLException ex){
+            Logger.getLogger(DbManager.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 }

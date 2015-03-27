@@ -41,8 +41,20 @@ public class Controller extends HttpServlet {
         }
         
         else if(todo.equals("signup")){
+            String name = request.getParameter("name");
+            String password = request.getParameter("password");
+            String email = request.getParameter("email");
+            String guildStr = request.getParameter("guild");
+            Boolean guild = false;
+            
+            if(guildStr.equals("Oui")){
+                guild = true;
+            }
+            
+            System.out.println(name+password+email+guild);
             DbManager db = new DbManager();
             db.connect();
+            db.insertMember(name, password, email, guild);
             db.close();
             RequestDispatcher rd = request.getRequestDispatcher("index.jsp");
             rd.forward(request, response);
