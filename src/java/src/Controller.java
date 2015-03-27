@@ -38,8 +38,6 @@ public class Controller extends HttpServlet {
         
         if(todo == null){ // default
             System.out.println("Servlet default");
-            SessionTracking cookie = new SessionTracking();
-            request.getSession().setAttribute("login", cookie);
             RequestDispatcher rd = request.getRequestDispatcher("index.jsp");
             rd.forward(request, response);
         }
@@ -60,9 +58,6 @@ public class Controller extends HttpServlet {
             db.connect();
             db.insertMember(name, password, email, guild);
             db.close();
-            SessionTracking cookie = new SessionTracking();
-            cookie.setLogin("Connecté");
-            request.getSession().setAttribute("login", cookie);
             RequestDispatcher rd = request.getRequestDispatcher("index.jsp");
             rd.forward(request, response);
         }
@@ -71,6 +66,19 @@ public class Controller extends HttpServlet {
             Cookie loginCookie = new Cookie("log", "yes");
             loginCookie.setMaxAge(30*60);
             response.addCookie(loginCookie);
+            RequestDispatcher rd = request.getRequestDispatcher("index.jsp");
+            rd.forward(request, response);
+        }
+        
+        else if(todo.equals("logout")){
+            Cookie[] cookies = request.getCookies();
+            if(cookies != null){
+                for(Cookie cookie : cookies){
+                    cookie.setMaxAge(0);
+                    response.addCookie(cookie);
+                }
+            }
+            
             RequestDispatcher rd = request.getRequestDispatcher("index.jsp");
             rd.forward(request, response);
         }

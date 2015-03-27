@@ -23,18 +23,14 @@
                 <li><a href="#">Dashboard</a></li>
                 <li><a href="#">Settings</a></li>
                 <c:choose>
-                    <c:when test="${empty cookie}">
+                    <c:when test="${cookie.log == null}">
                         <li><a href="signup.jsp">S'inscrire</a></li>
                         <li><a href="login.jsp">Se connecter</a></li>
                     </c:when>
                     <c:otherwise>
-                        <c:forEach items="${cookie}" var="currentCookie">
-                            <c:if test="${currentCookie.key} == 'log'}">
-                                <c:if test="${currentCookie.value.value} == 'yes'}">
-                                    <li><a href="#">Déconnexion</a></li>
-                                </c:if>
-                            </c:if>
-                        </c:forEach>
+                        <li>
+                            <a href="index.html?state=logout">Déconnexion</a>
+                        </li>
                     </c:otherwise>
                 </c:choose>
             </ul>
