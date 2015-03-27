@@ -5,11 +5,13 @@
  */
 package src;
 
+import bean.SessionTracking;
 import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -36,6 +38,8 @@ public class Controller extends HttpServlet {
         
         if(todo == null){ // default
             System.out.println("Servlet default");
+            SessionTracking cookie = new SessionTracking();
+            request.getSession().setAttribute("login", cookie);
             RequestDispatcher rd = request.getRequestDispatcher("index.jsp");
             rd.forward(request, response);
         }
@@ -56,11 +60,17 @@ public class Controller extends HttpServlet {
             db.connect();
             db.insertMember(name, password, email, guild);
             db.close();
+            SessionTracking cookie = new SessionTracking();
+            cookie.setLogin("Connecté");
+            request.getSession().setAttribute("login", cookie);
             RequestDispatcher rd = request.getRequestDispatcher("index.jsp");
             rd.forward(request, response);
         }
         
         else if(todo.equals("login")){
+            Cookie loginCookie = new Cookie("log", "yes");
+            loginCookie.setMaxAge(30*60);
+            response.addCookie(loginCookie);
             RequestDispatcher rd = request.getRequestDispatcher("index.jsp");
             rd.forward(request, response);
         }

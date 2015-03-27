@@ -4,6 +4,7 @@
     Author     : mute
 --%>
 
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <nav class="navbar navbar-inverse navbar-fixed-top">
@@ -21,8 +22,21 @@
             <ul class="nav navbar-nav navbar-right">
                 <li><a href="#">Dashboard</a></li>
                 <li><a href="#">Settings</a></li>
-                <li><a href="signup.jsp">Sign Up</a></li>
-                <li><a href="login.jsp">Log In</a></li>
+                <c:choose>
+                    <c:when test="${empty cookie}">
+                        <li><a href="signup.jsp">S'inscrire</a></li>
+                        <li><a href="login.jsp">Se connecter</a></li>
+                    </c:when>
+                    <c:otherwise>
+                        <c:forEach items="${cookie}" var="currentCookie">
+                            <c:if test="${currentCookie.key} == 'log'}">
+                                <c:if test="${currentCookie.value.value} == 'yes'}">
+                                    <li><a href="#">Déconnexion</a></li>
+                                </c:if>
+                            </c:if>
+                        </c:forEach>
+                    </c:otherwise>
+                </c:choose>
             </ul>
             <form class="navbar-form navbar-right">
                 <input type="text" class="form-control" placeholder="Search...">
