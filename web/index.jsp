@@ -70,32 +70,50 @@
                         </div>
                     </div>
 
-                    <h2 class="sub-header">Section title</h2>
+                    <h2 class="sub-header">Liste des produits</h2>
                     <div class="table-responsive">
-                        <table class="table table-striped">
+                        <table id="items-table" class="table table-striped">
                             <thead>
                                 <tr>
-                                    <th>#</th>
+                                    <th></th>
                                     <th>Nom</th>
-                                    <th>Header</th>
-                                    <th>Header</th>
-                                    <th>Header</th>
+                                    <th>Prix</th>
+                                    <th>Attaque</th>
+                                    <th>Défense</th>
+                                    <th>Magie</th>
+                                    <th>Résistance</th>
+                                    <th>Vitesse</th>
+                                    <th>Case</th>
+                                    <th>Saut</th>
+                                    <th>Esquive</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 <tr>
-                                    <td>1,001</td>
-                                    <td>Lorem</td>
-                                    <td>ipsum</td>
-                                    <td>dolor</td>
-                                    <td>sit</td>
+                                    <td><img src="res/img/objets/obj_1.gif" /></td>
+                                    <td>Casq. romain </td>
+                                    <td>250</td>
+                                    <td>-</td>
+                                    <td>4</td>
+                                    <td>-</td>
+                                    <td>2</td>
+                                    <td>-</td>
+                                    <td>-</td>
+                                    <td>-</td>
+                                    <td>-</td>
                                 </tr>
                                 <tr>
-                                    <td>1,002</td>
-                                    <td>amet</td>
-                                    <td>consectetur</td>
-                                    <td>adipiscing</td>
-                                    <td>elit</td>
+                                    <td><img src="res/img/objets/obj_1.gif" /></td>
+                                    <td>Casq. romain </td>
+                                    <td>250</td>
+                                    <td>-</td>
+                                    <td>4</td>
+                                    <td>-</td>
+                                    <td>2</td>
+                                    <td>-</td>
+                                    <td>-</td>
+                                    <td>-</td>
+                                    <td>-</td>
                                 </tr>
                             </tbody>
                         </table>
