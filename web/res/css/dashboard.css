@@ -17,6 +17,9 @@ body {
 	padding-top: 50px;
 }
 
+#items-table td, #items-table th {
+    text-align: center;
+}
 
 /*
  * Global add-ons
