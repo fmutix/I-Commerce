@@ -60,11 +60,18 @@ public class Controller extends HttpServlet {
 		}
 		
 		else if(state.equals("login")){
-			User user = new User();
-			request.getSession().setAttribute("user", user);
-			Cookie userCookie = new Cookie("user", "yes");
-			userCookie.setMaxAge(30*60);
-			response.addCookie(userCookie);
+			DbManager db = new DbManager();
+			db.connect();
+			String name = request.getParameter("name");
+			boolean isMember = db.isMember(name);
+			db.close();
+			if(isMember){
+				User user = new User();
+				request.getSession().setAttribute("user", user);
+				Cookie userCookie = new Cookie("user", "yes");
+				userCookie.setMaxAge(30*60);
+				response.addCookie(userCookie);
+			}
 			RequestDispatcher rd = request.getRequestDispatcher("index.jsp");
 			rd.forward(request, response);
 		}
