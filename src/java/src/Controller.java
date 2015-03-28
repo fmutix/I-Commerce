@@ -34,6 +34,7 @@ public class Controller extends HttpServlet {
         
         if(todo == null){ // default
             System.out.println("Servlet default");
+            loadCookie(request, response);
             RequestDispatcher rd = request.getRequestDispatcher("index.jsp");
             rd.forward(request, response);
         }
@@ -70,8 +71,30 @@ public class Controller extends HttpServlet {
             rd.forward(request, response);
         }
     }
+    /**
+     * load information from cookie to bean
+     * @param request
+     * @param response 
+     */
+    private void loadCookie(HttpServletRequest request, HttpServletResponse response){
+        Cookie cookieList[] = request.getCookies();
+        String isUser = searchCookie(cookieList, "user");
+        if(isUser != null){
+            request.getSession().setAttribute("user", new User());
+        }
+    }
+    
+    private String searchCookie(Cookie cookieList[], String cookieName){
+        if(cookieList != null){
+            for(Cookie cookie : cookieList){
+                if(cookie.getName().equals(cookieName)){
+                    return cookie.getValue();
+                }
+            }
+        }
+        return null;
+    }
 
-    // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
      * Handles the HTTP <code>GET</code> method.
      *
