@@ -78,8 +78,8 @@ public class Controller extends HttpServlet {
 	 */
 	private void loadCookie(HttpServletRequest request, HttpServletResponse response){
 		Cookie cookieList[] = request.getCookies();
-		String isUser = searchCookie(cookieList, "user").getValue();
-		if(isUser != null){
+		Cookie userCookie = searchCookie(cookieList, "user");
+		if(userCookie != null){
 			request.getSession().setAttribute("user", new User());
 		}
 	}
