@@ -30,14 +30,14 @@
 						<li><a href="#">Panier</a></li>
 					</ul>
 					<ul class="nav nav-sidebar">
-						<li><a href="index.html?state=filter&type=Tête">Tête</a></li>
-						<li><a href="">Casque</a></li>
-						<li><a href="">Chapeaux</a></li>
-						<li><a href="">Ruban</a></li>
+						<li><a href="index.html?state=type&type=Tête">Tête</a></li>
+						<li><a href="index.html?state=category&category=Casque">Casque</a></li>
+						<li><a href="index.html?state=category&category=Chapeau">Chapeaux</a></li>
+						<li><a href="index.html?state=category&category=Ruban">Ruban</a></li>
 					</ul>
 					<ul class="nav nav-sidebar">
-						<li><a href="index.html?state=filter&type=Corps">Corps</a></li>
-						<li><a href="">Armures</a></li>
+						<li><a href="index.html?state=type&type=Corps">Corps</a></li>
+						<li><a href="index.html?state=category&category=Armure">Armures</a></li>
 					</ul>
 				</div>
 				<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">

@@ -87,6 +87,30 @@ public class Controller extends HttpServlet {
 			RequestDispatcher rd = request.getRequestDispatcher("portal.jsp");
 			rd.forward(request, response);
 		}
+		
+		else if(state.equals("type")){
+			String type = request.getParameter("type");
+			DbManager db = new DbManager();
+			db.connect();
+			ItemList itemList = new ItemList();
+			itemList.setItemList(db.selectItemsByType(type));
+			request.setAttribute("itemlist", itemList);
+			db.close();
+			RequestDispatcher rd = request.getRequestDispatcher("index.jsp");
+			rd.forward(request, response);
+		}
+		
+		else if(state.equals("category")){
+			String category = request.getParameter("category");
+			DbManager db = new DbManager();
+			db.connect();
+			ItemList itemList = new ItemList();
+			itemList.setItemList(db.selectItemsByCategory(category));
+			request.setAttribute("itemlist", itemList);
+			db.close();
+			RequestDispatcher rd = request.getRequestDispatcher("index.jsp");
+			rd.forward(request, response);
+		}
 	}
 	/**
 	 * load information from cookie to bean
