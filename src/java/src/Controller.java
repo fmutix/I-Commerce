@@ -5,6 +5,7 @@
  */
 package src;
 
+import bean.ItemList;
 import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -37,6 +38,12 @@ public class Controller extends HttpServlet {
         
         if(todo == null){ // default
             System.out.println("Servlet default");
+            DbManager db = new DbManager();
+            db.connect();
+            ItemList itemList = new ItemList();
+            itemList.setItemList(db.selectItems());
+            request.setAttribute("itemlist", itemList);
+            db.close();
             RequestDispatcher rd = request.getRequestDispatcher("index.jsp");
             rd.forward(request, response);
         }
@@ -52,7 +59,6 @@ public class Controller extends HttpServlet {
                 guild = true;
             }
             
-            System.out.println(name+password+email+guild);
             DbManager db = new DbManager();
             db.connect();
             db.insertMember(name, password, email, guild);
