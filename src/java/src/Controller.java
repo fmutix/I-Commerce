@@ -25,91 +25,88 @@ public class Controller extends HttpServlet {
 	 * @throws java.lang.ClassNotFoundException
 	 */
 	protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-		throws ServletException, IOException, ClassNotFoundException {
+			  throws ServletException, IOException, ClassNotFoundException {
+		String nextPage = "index.jsp";
 		String state = request.getParameter("state");
 		
-		if(state == null){ // default
-			DbManager db = new DbManager();
-			db.connect();
-			ItemList itemList = new ItemList();
-			itemList.setItemList(db.selectItems());
-			request.setAttribute("itemlist", itemList);
-			db.close();
+		if(state == null){
 			loadCookie(request, response);
-			String nextPage = "index.jsp";
 			if(!isLogged(request)){
 				nextPage = "portal.jsp";
+			}else{
+				DbManager db = new DbManager();
+				db.connect();
+				ItemList itemList = new ItemList();
+				itemList.setItemList(db.selectItems());
+				request.setAttribute("itemlist", itemList);
+				db.close();
 			}
 			RequestDispatcher rd = request.getRequestDispatcher(nextPage);
 			rd.forward(request, response);
+			return;
 		}
-	
-		else if(state.equals("signup")){
-			Member member = new Member();
-			member.setName(request.getParameter("name"));
-			member.setPassword(request.getParameter("password"));
-			member.setEmail(request.getParameter("email"));
-			member.setGuild(request.getParameter("guild").equals("Oui"));
+		
+		DbManager db = new DbManager();
+		db.connect();
+		switch(state){
 			
-			DbManager db = new DbManager();
-			db.connect();
-			db.insertMember(member);
-			db.close();
-			RequestDispatcher rd = request.getRequestDispatcher("index.jsp");
-			rd.forward(request, response);
-		}
-		
-		else if(state.equals("login")){
-			DbManager db = new DbManager();
-			db.connect();
-			ItemList itemList = new ItemList();
-			itemList.setItemList(db.selectItems());
-			request.setAttribute("itemlist", itemList);
-			String name = request.getParameter("name");
-			Member user = db.getMember(name);
-			db.close();
-			if(user != null){
-				request.getSession().setAttribute("user", user);
-				Cookie userCookie = new Cookie("user", "yes");
-				userCookie.setMaxAge(30*60);
-				response.addCookie(userCookie);
+			case "signup":{
+				Member member = new Member();
+				member.setName(request.getParameter("name"));
+				member.setPassword(request.getParameter("password"));
+				member.setEmail(request.getParameter("email"));
+				member.setGuild(request.getParameter("guild").equals("Oui"));
+				db.insertMember(member);
 			}
-			RequestDispatcher rd = request.getRequestDispatcher("index.jsp");
-			rd.forward(request, response);
+			break;
+				
+			case "login":{
+				ItemList itemList = new ItemList();
+				itemList.setItemList(db.selectItems());
+				request.setAttribute("itemlist", itemList);
+				String name = request.getParameter("name");
+				Member user = db.getMember(name);
+				
+				if(user != null){
+					request.getSession().setAttribute("user", user);
+					Cookie userCookie = new Cookie("user", name);
+					userCookie.setMaxAge(30*60);
+					response.addCookie(userCookie);
+				}
+			}
+			break;
+				
+			case "logout":{
+				Cookie userCookie = searchCookie(request.getCookies(), "user");
+				userCookie.setMaxAge(0);
+				response.addCookie(userCookie);
+				request.getSession().setAttribute("user", null);
+				nextPage = "portal.jsp";
+			}
+			break;
+				
+			case "type":{
+				String type = request.getParameter("type");
+				ItemList itemList = new ItemList();
+				itemList.setItemList(db.selectItemsByType(type));
+				request.setAttribute("itemlist", itemList);
+			}
+			break;
+				
+			case "category":{
+				String category = request.getParameter("category");
+				ItemList itemList = new ItemList();
+				itemList.setItemList(db.selectItemsByCategory(category));
+				request.setAttribute("itemlist", itemList);
+			}
+			break;
+				
+				
 		}
 		
-		else if(state.equals("logout")){
-			Cookie userCookie = searchCookie(request.getCookies(), "user");
-			userCookie.setMaxAge(0);
-			response.addCookie(userCookie);
-			request.getSession().setAttribute("user", null);
-			RequestDispatcher rd = request.getRequestDispatcher("portal.jsp");
-			rd.forward(request, response);
-		}
-		
-		else if(state.equals("type")){
-			String type = request.getParameter("type");
-			DbManager db = new DbManager();
-			db.connect();
-			ItemList itemList = new ItemList();
-			itemList.setItemList(db.selectItemsByType(type));
-			request.setAttribute("itemlist", itemList);
-			db.close();
-			RequestDispatcher rd = request.getRequestDispatcher("index.jsp");
-			rd.forward(request, response);
-		}
-		
-		else if(state.equals("category")){
-			String category = request.getParameter("category");
-			DbManager db = new DbManager();
-			db.connect();
-			ItemList itemList = new ItemList();
-			itemList.setItemList(db.selectItemsByCategory(category));
-			request.setAttribute("itemlist", itemList);
-			db.close();
-			RequestDispatcher rd = request.getRequestDispatcher("index.jsp");
-			rd.forward(request, response);
-		}
+		db.close();
+		RequestDispatcher rd = request.getRequestDispatcher(nextPage);
+		rd.forward(request, response);
 	}
 	/**
 	 * load information from cookie to bean
