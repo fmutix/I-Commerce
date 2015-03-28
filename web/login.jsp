@@ -21,10 +21,10 @@
         <div class="container">
             <form class="form-login" action="index.html" scope="session">
                 <h2 class="form-login-heading">Connexion</h2>
-                <label for="inputUsername" class="sr-only">Email</label>
-                <input type="text" id="inputUsername" class="form-control" placeholder="Username" required autofocus>
+                <label for="inputUsername" class="sr-only">Nom</label>
+                <input name="name" type="text" id="inputUsername" class="form-control" placeholder="Username" required autofocus>
                 <label for="inputPassword" class="sr-only">Mot de passe</label>
-                <input type="password" id="inputPassword" class="form-control" placeholder="Password" required>
+                <input name="password" type="password" id="inputPassword" class="form-control" placeholder="Password" required>
                 <button class="btn btn-lg btn-primary btn-block" type="submit">Go</button>
                 <input type="hidden" name="state" value="login">
             </form>

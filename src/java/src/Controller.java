@@ -65,12 +65,16 @@ public class Controller extends HttpServlet {
 			ItemList itemList = new ItemList();
 			itemList.setItemList(db.selectItems());
 			request.setAttribute("itemlist", itemList);
+			String name = request.getParameter("name");
+			boolean isMember = db.isMember(name);
 			db.close();
-			User user = new User();
-			request.getSession().setAttribute("user", user);
-			Cookie userCookie = new Cookie("user", "yes");
-			userCookie.setMaxAge(30*60);
-			response.addCookie(userCookie);
+			if(isMember){
+				User user = new User();
+				request.getSession().setAttribute("user", user);
+				Cookie userCookie = new Cookie("user", "yes");
+				userCookie.setMaxAge(30*60);
+				response.addCookie(userCookie);
+			}
 			RequestDispatcher rd = request.getRequestDispatcher("index.jsp");
 			rd.forward(request, response);
 		}
@@ -81,19 +85,6 @@ public class Controller extends HttpServlet {
 			response.addCookie(userCookie);
 			request.getSession().setAttribute("user", null);
 			RequestDispatcher rd = request.getRequestDispatcher("portal.jsp");
-			rd.forward(request, response);
-		}
-		
-		else if(state.equals("filter")){
-			String type = request.getParameter("type");
-			System.out.println(type);
-			DbManager db = new DbManager();
-			db.connect();
-			ItemList itemList = new ItemList();
-			itemList.setItemList(db.selectItemsByType(type));
-			request.setAttribute("itemlist", itemList);
-			db.close();
-			RequestDispatcher rd = request.getRequestDispatcher("index.jsp");
 			rd.forward(request, response);
 		}
 	}

@@ -162,7 +162,7 @@ public class DbManager {
 	public boolean isMember(String memberName){
 		boolean isMember = false;
 		try{
-			String query = "SELECT * from APP.MEMBER where name='"+memberName+"'";
+			String query = "SELECT * from APP.MEMBER where NAME='"+memberName+"'";
 			STMT = DB.createStatement();
 			ResultSet rs = STMT.executeQuery(query);
 			if(rs.next()){
