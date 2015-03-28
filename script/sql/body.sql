@@ -44,4 +44,4 @@ INSERT INTO
 	VALUES ('Cotte Matéria', 'Corps', 'Armure', 14000, 52, 16, 'res/img/objets/obj_77.gif');
 INSERT INTO 
 	APP.ITEM (Name,Type,Category,Price,Attack,Defense,Magic,Resistance,Speed,Move,Jump,Evasion,Path)
-	VALUES ('Peytral', 'Corps', 'Armure', 25000, 5, 28, 5, 2, 2, 1, 1, 5, 'res/img/objets/obj_77.gif');
+	VALUES ('Peytral', 'Corps', 'Armure', 25000, 5, 28, 5, 2, 2, 1, 1, 5, 'res/img/objets/obj_78.gif');
