@@ -30,16 +30,16 @@ public class Controller extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException, ClassNotFoundException {
-        String todo = request.getParameter("state");
+        String state = request.getParameter("state");
         
-        if(todo == null){ // default
+        if(state == null){ // default
             System.out.println("Servlet default");
             loadCookie(request, response);
             RequestDispatcher rd = request.getRequestDispatcher("index.jsp");
             rd.forward(request, response);
         }
         
-        else if(todo.equals("signup")){
+        else if(state.equals("signup")){
             String name = request.getParameter("name");
             String password = request.getParameter("password");
             String email = request.getParameter("email");
@@ -55,7 +55,7 @@ public class Controller extends HttpServlet {
             rd.forward(request, response);
         }
         
-        else if(todo.equals("login")){
+        else if(state.equals("login")){
             User user = new User();
             request.getSession().setAttribute("user", user);
             Cookie userCookie = new Cookie("user", "yes");
@@ -65,7 +65,7 @@ public class Controller extends HttpServlet {
             rd.forward(request, response);
         }
         
-        else if(todo.equals("logout")){
+        else if(state.equals("logout")){
             request.getSession().setAttribute("user",null);
             RequestDispatcher rd = request.getRequestDispatcher("index.jsp");
             rd.forward(request, response);
