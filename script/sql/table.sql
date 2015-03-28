@@ -93,7 +93,7 @@ INSERT INTO
 	APP.ITEM (Name,Type,Category,Price,Defense,Resistance,Path)
 	VALUES ('Chapeau Blanc', 'Tête', 'Chapeau', 4000, 4, 14, 'res/img/objets/obj_45.gif');
 INSERT INTO 
-	APP.ITEM (Name,Type,Category,Price,Defense,Magic,Resistance,Move,Jump,Evasion,Path)
+	APP.ITEM (Name,Type,Category,Price,Attack,Defense,Magic,Resistance,Move,Jump,Evasion,Path)
 	VALUES ('Coiffe Acacia', 'Tête', 'Chapeau', 7500, 2, 5, 2,, 2, 1, 1, 5, 'res/img/objets/obj_46.gif');
 INSERT INTO 
 	APP.ITEM (Name,Type,Category,Price,Defense,Resistance,Path)
