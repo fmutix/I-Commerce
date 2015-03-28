@@ -67,6 +67,8 @@ public class Controller extends HttpServlet {
 		else if(state.equals("logout")){
 			Cookie userCookie = searchCookie(request.getCookies(), "user");
 			userCookie.setMaxAge(0);
+			response.addCookie(userCookie);
+			request.getSession().setAttribute("user", null);
 			RequestDispatcher rd = request.getRequestDispatcher("portal.jsp");
 			rd.forward(request, response);
 		}
