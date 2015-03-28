@@ -130,7 +130,7 @@ public class DbManager {
                 item.setJump(rs.getInt("jump"));
                 item.setEvasion(rs.getInt("evasion"));
                 item.setPath(rs.getString("path"));
-                itemList.put(name, item);
+				itemList.put(name, item);
             }
         } catch (SQLException ex) {
             Logger.getLogger(DbManager.class.getName()).log(Level.SEVERE, null, ex);
