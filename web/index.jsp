@@ -30,13 +30,13 @@
 						<li><a href="#">Panier</a></li>
 					</ul>
 					<ul class="nav nav-sidebar">
-						<li><a href="">Tête</a></li>
+						<li><a href="index.html?state=filter&type=Tête">Tête</a></li>
 						<li><a href="">Casque</a></li>
 						<li><a href="">Chapeaux</a></li>
 						<li><a href="">Ruban</a></li>
 					</ul>
 					<ul class="nav nav-sidebar">
-						<li><a href="">Corps</a></li>
+						<li><a href="index.html?state=filter&type=Corps">Corps</a></li>
 						<li><a href="">Armures</a></li>
 					</ul>
 				</div>

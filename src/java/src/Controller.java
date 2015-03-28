@@ -60,6 +60,12 @@ public class Controller extends HttpServlet {
 		}
 		
 		else if(state.equals("login")){
+			DbManager db = new DbManager();
+			db.connect();
+			ItemList itemList = new ItemList();
+			itemList.setItemList(db.selectItems());
+			request.setAttribute("itemlist", itemList);
+			db.close();
 			User user = new User();
 			request.getSession().setAttribute("user", user);
 			Cookie userCookie = new Cookie("user", "yes");
@@ -75,6 +81,19 @@ public class Controller extends HttpServlet {
 			response.addCookie(userCookie);
 			request.getSession().setAttribute("user", null);
 			RequestDispatcher rd = request.getRequestDispatcher("portal.jsp");
+			rd.forward(request, response);
+		}
+		
+		else if(state.equals("filter")){
+			String type = request.getParameter("type");
+			System.out.println(type);
+			DbManager db = new DbManager();
+			db.connect();
+			ItemList itemList = new ItemList();
+			itemList.setItemList(db.selectItemsByType(type));
+			request.setAttribute("itemlist", itemList);
+			db.close();
+			RequestDispatcher rd = request.getRequestDispatcher("index.jsp");
 			rd.forward(request, response);
 		}
 	}

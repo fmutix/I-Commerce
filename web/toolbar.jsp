@@ -16,7 +16,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="index.jsp">Ivalice Commerce</a>
+            <a class="navbar-brand" href="index.html">Ivalice Commerce</a>
         </div>
         <div id="navbar" class="navbar-collapse collapse">
             <ul class="nav navbar-nav navbar-right">
@@ -35,7 +35,7 @@
                 </c:choose>
             </ul>
             <form class="navbar-form navbar-right">
-                <input name="search" type="text" class="form-control" placeholder="Search...">
+                <input name="search" type="text" class="form-control" placeholder="Catégorie ou type...">
 				<input type="hidden" name="state" value="search">
             </form>
         </div>
