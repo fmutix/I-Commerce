@@ -38,6 +38,9 @@
 					<ul class="nav nav-sidebar">
 						<li><a href="index.html?state=type&type=Corps">Corps</a></li>
 						<li><a href="index.html?state=category&category=Armure">Armure</a></li>
+						<li><a href="index.html?state=category&category=Tunique">Tunique</a></li>
+						<li><a href="index.html?state=category&category=Buste">Buste</a></li>
+						<li><a href="index.html?state=category&category=Toge">Toge</a></li>
 					</ul>
 				</div>
 				<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
