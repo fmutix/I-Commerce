@@ -10,6 +10,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -108,7 +109,7 @@ public class DbManager {
 	public HashMap<String, Item> selectItems(){
 		HashMap<String, Item> itemList = new HashMap<String, Item>();
 		try {
-			String query = "SELECT * FROM APP.ITEM";
+			String query = "SELECT * FROM APP.ITEM ORDER BY Price";
 			STMT = DB.createStatement();
 			ResultSet rs = STMT.executeQuery(query);
 			while(rs.next()){
@@ -136,9 +137,9 @@ public class DbManager {
 	}
 	
 	public HashMap<String,Item> selectItemsByType(String type){
-		HashMap<String, Item> itemList = new HashMap<String, Item>();
+		HashMap<String, Item> itemList = new LinkedHashMap<String, Item>();
 		try {
-			String query = "SELECT * FROM APP.ITEM WHERE Type='" + type + "'";
+			String query = "SELECT * FROM APP.ITEM WHERE Type='" + type + "' ORDER BY Price";
 			STMT = DB.createStatement();
 			ResultSet rs = STMT.executeQuery(query);
 			while(rs.next()){
@@ -166,9 +167,9 @@ public class DbManager {
 	}
 	
 	public HashMap<String,Item> selectItemsByCategory(String category){
-		HashMap<String, Item> itemList = new HashMap<String, Item>();
+		HashMap<String, Item> itemList = new LinkedHashMap<String, Item>();
 		try {
-			String query = "SELECT * FROM APP.ITEM WHERE Category='" + category + "'";
+			String query = "SELECT * FROM APP.ITEM WHERE Category='" + category + "' ORDER BY Price";
 			STMT = DB.createStatement();
 			ResultSet rs = STMT.executeQuery(query);
 			while(rs.next()){
