@@ -1,8 +1,3 @@
-/*
-* To change this license header, choose License Headers in Project Properties.
-* To change this template file, choose Tools | Templates
-* and open the template in the editor.
-*/
 package src;
 
 import bean.ItemList;
@@ -34,7 +29,6 @@ public class Controller extends HttpServlet {
 		String state = request.getParameter("state");
 		
 		if(state == null){ // default
-			System.out.println("Servlet default");
 			DbManager db = new DbManager();
 			db.connect();
 			ItemList itemList = new ItemList();
@@ -42,10 +36,14 @@ public class Controller extends HttpServlet {
 			request.setAttribute("itemlist", itemList);
 			db.close();
 			loadCookie(request, response);
-			RequestDispatcher rd = request.getRequestDispatcher("index.jsp");
+			String nextPage = "index.jsp";
+			if(!isLogged(request)){
+				nextPage = "portal.jsp";
+			}
+			RequestDispatcher rd = request.getRequestDispatcher(nextPage);
 			rd.forward(request, response);
 		}
-		
+	
 		else if(state.equals("signup")){
 			String name = request.getParameter("name");
 			String password = request.getParameter("password");
@@ -72,8 +70,11 @@ public class Controller extends HttpServlet {
 		}
 		
 		else if(state.equals("logout")){
-			request.getSession().setAttribute("user",null);
-			RequestDispatcher rd = request.getRequestDispatcher("index.jsp");
+			Cookie userCookie = searchCookie(request.getCookies(), "user");
+			userCookie.setMaxAge(0);
+			response.addCookie(userCookie);
+			request.getSession().setAttribute("user", null);
+			RequestDispatcher rd = request.getRequestDispatcher("portal.jsp");
 			rd.forward(request, response);
 		}
 	}
@@ -84,23 +85,26 @@ public class Controller extends HttpServlet {
 	 */
 	private void loadCookie(HttpServletRequest request, HttpServletResponse response){
 		Cookie cookieList[] = request.getCookies();
-		String isUser = searchCookie(cookieList, "user");
-		if(isUser != null){
+		Cookie userCookie = searchCookie(cookieList, "user");
+		if(userCookie != null){
 			request.getSession().setAttribute("user", new User());
 		}
 	}
 	
-	private String searchCookie(Cookie cookieList[], String cookieName){
+	private Cookie searchCookie(Cookie cookieList[], String cookieName){
 		if(cookieList != null){
 			for(Cookie cookie : cookieList){
 				if(cookie.getName().equals(cookieName)){
-					return cookie.getValue();
+					return cookie;
 				}
 			}
 		}
 		return null;
 	}
 	
+	private boolean isLogged(HttpServletRequest request){
+		return request.getSession().getAttribute("user") != null;
+	}
 	/**
 	 * Handles the HTTP <code>GET</code> method.
 	 *
@@ -111,7 +115,7 @@ public class Controller extends HttpServlet {
 	 */
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
-		throws ServletException, IOException {
+			  throws ServletException, IOException {
 		try {
 			processRequest(request, response);
 		} catch (ClassNotFoundException ex) {
@@ -129,7 +133,7 @@ public class Controller extends HttpServlet {
 	 */
 	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
-		throws ServletException, IOException {
+			  throws ServletException, IOException {
 		try {
 			processRequest(request, response);
 		} catch (ClassNotFoundException ex) {

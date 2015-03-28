@@ -1,9 +1,3 @@
-<%-- 
-    Document   : signup
-    Created on : Mar 26, 2015, 1:01:29 PM
-    Author     : mute
---%>
-
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
