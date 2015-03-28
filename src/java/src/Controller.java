@@ -53,7 +53,7 @@ public class Controller extends HttpServlet {
 			
 			DbManager db = new DbManager();
 			db.connect();
-			db.insertMember(member.getName(), member.getPassword(), member.getEmail(), member.getGuild());
+			db.insertMember(member);
 			db.close();
 			RequestDispatcher rd = request.getRequestDispatcher("index.jsp");
 			rd.forward(request, response);
