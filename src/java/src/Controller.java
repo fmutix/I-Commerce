@@ -1,7 +1,7 @@
 package src;
 
 import bean.ItemList;
-import bean.User;
+import bean.Member;
 import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -45,15 +45,15 @@ public class Controller extends HttpServlet {
 		}
 	
 		else if(state.equals("signup")){
-			String name = request.getParameter("name");
-			String password = request.getParameter("password");
-			String email = request.getParameter("email");
-			String guildStr = request.getParameter("guild");
-			Boolean guild = guildStr.equals("Oui");
+			Member member = new Member();
+			member.setName(request.getParameter("name"));
+			member.setPassword(request.getParameter("password"));
+			member.setEmail(request.getParameter("email"));
+			member.setGuild(request.getParameter("guild").equals("Oui"));
 			
 			DbManager db = new DbManager();
 			db.connect();
-			db.insertMember(name, password, email, guild);
+			db.insertMember(member.getName(), member.getPassword(), member.getEmail(), member.getGuild());
 			db.close();
 			RequestDispatcher rd = request.getRequestDispatcher("index.jsp");
 			rd.forward(request, response);
@@ -69,7 +69,7 @@ public class Controller extends HttpServlet {
 			boolean isMember = db.isMember(name);
 			db.close();
 			if(isMember){
-				User user = new User();
+				Member user = new Member();
 				request.getSession().setAttribute("user", user);
 				Cookie userCookie = new Cookie("user", "yes");
 				userCookie.setMaxAge(30*60);
@@ -97,7 +97,7 @@ public class Controller extends HttpServlet {
 		Cookie cookieList[] = request.getCookies();
 		Cookie userCookie = searchCookie(cookieList, "user");
 		if(userCookie != null){
-			request.getSession().setAttribute("user", new User());
+			request.getSession().setAttribute("user", new Member());
 		}
 	}
 	
