@@ -26,8 +26,6 @@
 				<div class="col-sm-3 col-md-2 sidebar">
 					<ul class="nav nav-sidebar">
 						<li><a href="#">Panier</a></li>
-						<li><a href="#">Panier</a></li>
-						<li><a href="#">Panier</a></li>
 					</ul>
 					<ul class="nav nav-sidebar">
 						<li><a href="index.html?state=type&type=Tête">Tête</a></li>
@@ -85,6 +83,7 @@
 									<th>Case</th>
 									<th>Saut</th>
 									<th>Esquive</th>
+									<th>Action panier</th>
 								</tr>
 							</thead>
 							<tbody>
@@ -102,6 +101,10 @@
 										<td>${item.value.move}</td>
 										<td>${item.value.jump}</td>
 										<td>${item.value.evasion}</td>
+										<td>
+											<a class="btn btn-primary" href="items.jsp" role="button">+</a> 
+											<a class="btn btn-primary" href="items.jsp" role="button">-</a>
+										</td>
 									</tr>
 								</c:forEach>
 							</tbody>
