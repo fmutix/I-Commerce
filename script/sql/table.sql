@@ -14,6 +14,7 @@ CREATE TABLE Item(
 	Defense NUMERIC(2,0),
 	Magic NUMERIC(2,0),
 	Resistance NUMERIC(2,0),
+	Speed NUMERIC(1,0),
 	Move NUMERIC(1,0),
 	Jump NUMERIC(1,0),
 	Evasion NUMERIC(1,0),
@@ -93,8 +94,8 @@ INSERT INTO
 	APP.ITEM (Name,Type,Category,Price,Defense,Resistance,Path)
 	VALUES ('Chapeau Blanc', 'Tête', 'Chapeau', 4000, 4, 14, 'res/img/objets/obj_45.gif');
 INSERT INTO 
-	APP.ITEM (Name,Type,Category,Price,Attack,Defense,Magic,Resistance,Move,Jump,Evasion,Path)
-	VALUES ('Coiffe Acacia', 'Tête', 'Chapeau', 7500, 2, 5, 2,, 2, 1, 1, 5, 'res/img/objets/obj_46.gif');
+	APP.ITEM (Name,Type,Category,Price,Defense,Magic,Resistance,Speed,Move,Jump,Evasion,Path)
+	VALUES ('Coiffe Acacia', 'Tête', 'Chapeau', 7500, 2, 5, 2, 2, 1, 1, 5, 'res/img/objets/obj_46.gif');
 INSERT INTO 
 	APP.ITEM (Name,Type,Category,Price,Defense,Resistance,Path)
 	VALUES ('Tiare', 'Tête', 'Chapeau', 6000, 8, 20, 'res/img/objets/obj_47.gif');
