@@ -20,19 +20,17 @@
         </div>
         <div id="navbar" class="navbar-collapse collapse">
             <ul class="nav navbar-nav navbar-right">
-                <li><a href="#">Dashboard</a></li>
-                <li><a href="#">Settings</a></li>
-					<c:choose>
-						<c:when test="${user == null}">
-							<li><a href="signup.jsp">S'inscrire</a></li>
-							<li><a href="login.jsp">Se connecter</a></li>
-						</c:when>
-						<c:otherwise>
-							<li>
-								<a href="index.html?state=logout">Déconnexion</a>
-							</li>
-						</c:otherwise>
-                </c:choose>
+				<c:choose>
+					<c:when test="${user == null}">
+						<li><a href="signup.jsp">S'inscrire</a></li>
+						<li><a href="login.jsp">Se connecter</a></li>
+					</c:when>
+					<c:otherwise>
+						<li>
+							<a href="index.html?state=logout">Déconnexion</a>
+						</li>
+					</c:otherwise>
+				</c:choose>
             </ul>
             <form class="navbar-form navbar-right">
                 <input name="search" type="text" class="form-control" placeholder="Catégorie ou type...">
