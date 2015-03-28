@@ -4,3 +4,20 @@ CREATE TABLE Member(
 	Email VARCHAR(255) NOT NULL,
 	PRIMARY KEY(Email)
 );
+
+CREATE TABLE Item(
+	Name VARCHAR(30) NOT NULL,
+	Type VARCHAR(30) NOT NULL,
+	Category VARCHAR(30) NOT NULL,
+	Price NUMERIC(5,0) NOT NULL,
+	Attack NUMERIC(2,0),
+	Defense NUMERIC(2,0),
+	Magic NUMERIC(2,0),
+	Resistance NUMERIC(2,0),
+	Move NUMERIC(1,0),
+	Jump NUMERIC(1,0),
+	Evasion NUMERIC(1,0),
+	PRIMARY KEY(Name)
+);
+
+
