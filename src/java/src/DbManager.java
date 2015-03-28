@@ -1,6 +1,7 @@
 package src;
 
 import bean.Item;
+import bean.Member;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.sql.Connection;
@@ -64,7 +65,12 @@ public class DbManager {
 		System.out.println("Close OK");
 	}
 	
-	public void insertMember(String name, String password, String email, Boolean guild){
+	public void insertMember(Member member){
+		String name = member.getName();
+		String password = member.getPassword();
+		String email = member.getEmail();
+		Boolean guild = member.getGuild();
+		
 		MessageDigest md;
 		String out = "";
 		try{
