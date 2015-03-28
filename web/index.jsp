@@ -1,3 +1,6 @@
+<%@page import="java.util.HashMap"%>
+<%@page import="bean.ItemList"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -83,32 +86,22 @@
 								</tr>
 							</thead>
 							<tbody>
-								<tr>
-									<td><img src="res/img/objets/obj_1.gif" /></td>
-									<td>Casq. romain </td>
-									<td>250</td>
-									<td>-</td>
-									<td>4</td>
-									<td>-</td>
-									<td>2</td>
-									<td>-</td>
-									<td>-</td>
-									<td>-</td>
-									<td>-</td>
-								</tr>
-								<tr>
-									<td><img src="res/img/objets/obj_1.gif" /></td>
-									<td>Casq. romain </td>
-									<td>250</td>
-									<td>-</td>
-									<td>4</td>
-									<td>-</td>
-									<td>2</td>
-									<td>-</td>
-									<td>-</td>
-									<td>-</td>
-									<td>-</td>
-								</tr>
+								<jsp:useBean id="itemlist" class="bean.ItemList" scope="request"/>
+								<c:forEach var="item" items="${itemlist.itemList}">
+									<tr>
+										<td><img src="${item.value.path}" /></td>
+										<td>${item.value.name}</td>
+										<td>${item.value.price}</td>
+										<td>${item.value.attack}</td>
+										<td>${item.value.defense}</td>
+										<td>${item.value.magic}</td>
+										<td>${item.value.resistance}</td>
+										<td>${item.value.speed}</td>
+										<td>${item.value.move}</td>
+										<td>${item.value.jump}</td>
+										<td>${item.value.evasion}</td>
+									</tr>
+								</c:forEach>
 							</tbody>
 						</table>
 					</div>

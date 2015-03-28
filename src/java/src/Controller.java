@@ -1,5 +1,6 @@
 package src;
 
+import bean.ItemList;
 import bean.User;
 import java.io.IOException;
 import java.util.logging.Level;
@@ -28,7 +29,12 @@ public class Controller extends HttpServlet {
 		String state = request.getParameter("state");
 		
 		if(state == null){ // default
-			System.out.println("Servlet default");
+			DbManager db = new DbManager();
+		    	db.connect();
+			ItemList itemList = new ItemList();
+			itemList.setItemList(db.selectItems());
+			request.setAttribute("itemlist", itemList);
+			db.close();
 			loadCookie(request, response);
 			String nextPage = "index.jsp";
 			if(!isLogged(request)){
@@ -37,7 +43,7 @@ public class Controller extends HttpServlet {
 			RequestDispatcher rd = request.getRequestDispatcher(nextPage);
 			rd.forward(request, response);
 		}
-		
+	
 		else if(state.equals("signup")){
 			String name = request.getParameter("name");
 			String password = request.getParameter("password");
@@ -45,7 +51,6 @@ public class Controller extends HttpServlet {
 			String guildStr = request.getParameter("guild");
 			Boolean guild = guildStr.equals("Oui");
 			
-			System.out.println(name+password+email+guild);
 			DbManager db = new DbManager();
 			db.connect();
 			db.insertMember(name, password, email, guild);

@@ -5,6 +5,7 @@
  */
 package src;
 
+import bean.Item;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.sql.Connection;
@@ -12,6 +13,7 @@ import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.HashMap;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -104,5 +106,35 @@ public class DbManager {
         }catch(SQLException ex){
             Logger.getLogger(DbManager.class.getName()).log(Level.SEVERE, null, ex);
         }
+    }
+    
+    public HashMap<String, Item> selectItems(){
+        HashMap<String, Item> itemList = new HashMap<String, Item>();
+        try {
+            String query = "SELECT * FROM APP.ITEM";
+            STMT = DB.createStatement();
+            ResultSet rs = STMT.executeQuery(query);
+            while(rs.next()){
+                String name = rs.getString("name");
+                Item item = new Item();
+                item.setName(name);
+                item.setType(rs.getString("type"));
+                item.setCategory(rs.getString("category"));
+                item.setPrice(rs.getInt("price"));
+                item.setAttack(rs.getInt("attack"));
+                item.setDefense(rs.getInt("defense"));
+                item.setMagic(rs.getInt("magic"));
+                item.setResistance(rs.getInt("resistance"));
+                item.setSpeed(rs.getInt("speed"));
+                item.setMove(rs.getInt("move"));
+                item.setJump(rs.getInt("jump"));
+                item.setEvasion(rs.getInt("evasion"));
+                item.setPath(rs.getString("path"));
+                itemList.put(name, item);
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(DbManager.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return itemList;
     }
 }
