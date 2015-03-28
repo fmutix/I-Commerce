@@ -5,6 +5,7 @@
  */
 package src;
 
+import bean.User;
 import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -15,10 +16,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-/**
- *
- * @author mute
- */
 public class Controller extends HttpServlet {
 
     /**
@@ -46,12 +43,8 @@ public class Controller extends HttpServlet {
             String password = request.getParameter("password");
             String email = request.getParameter("email");
             String guildStr = request.getParameter("guild");
-            Boolean guild = false;
-            
-            if(guildStr.equals("Oui")){
-                guild = true;
-            }
-            
+            Boolean guild = guildStr.equals("Oui");
+
             System.out.println(name+password+email+guild);
             DbManager db = new DbManager();
             db.connect();
@@ -62,22 +55,17 @@ public class Controller extends HttpServlet {
         }
         
         else if(todo.equals("login")){
-            Cookie loginCookie = new Cookie("log", "yes");
-            loginCookie.setMaxAge(30*60);
-            response.addCookie(loginCookie);
+            User user = new User();
+            request.getSession().setAttribute("user", user);
+            Cookie userCookie = new Cookie("user", "yes");
+            userCookie.setMaxAge(30*60);
+            response.addCookie(userCookie);
             RequestDispatcher rd = request.getRequestDispatcher("index.jsp");
             rd.forward(request, response);
         }
         
         else if(todo.equals("logout")){
-            Cookie[] cookies = request.getCookies();
-            if(cookies != null){
-                for(Cookie cookie : cookies){
-                    cookie.setMaxAge(0);
-                    response.addCookie(cookie);
-                }
-            }
-            
+            request.getSession().setAttribute("user",null);
             RequestDispatcher rd = request.getRequestDispatcher("index.jsp");
             rd.forward(request, response);
         }
