@@ -6,6 +6,7 @@
 package src;
 
 import bean.ItemList;
+import bean.User;
 import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -16,10 +17,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-/**
- *
- * @author mute
- */
 public class Controller extends HttpServlet {
 
     /**
@@ -34,9 +31,9 @@ public class Controller extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException, ClassNotFoundException {
-        String todo = request.getParameter("state");
+        String state = request.getParameter("state");
         
-        if(todo == null){ // default
+        if(state == null){ // default
             System.out.println("Servlet default");
             DbManager db = new DbManager();
             db.connect();
@@ -44,21 +41,18 @@ public class Controller extends HttpServlet {
             itemList.setItemList(db.selectItems());
             request.setAttribute("itemlist", itemList);
             db.close();
+            loadCookie(request, response);
             RequestDispatcher rd = request.getRequestDispatcher("index.jsp");
             rd.forward(request, response);
         }
         
-        else if(todo.equals("signup")){
+        else if(state.equals("signup")){
             String name = request.getParameter("name");
             String password = request.getParameter("password");
             String email = request.getParameter("email");
             String guildStr = request.getParameter("guild");
-            Boolean guild = false;
-            
-            if(guildStr.equals("Oui")){
-                guild = true;
-            }
-            
+            Boolean guild = guildStr.equals("Oui");
+
             DbManager db = new DbManager();
             db.connect();
             db.insertMember(name, password, email, guild);
@@ -67,29 +61,46 @@ public class Controller extends HttpServlet {
             rd.forward(request, response);
         }
         
-        else if(todo.equals("login")){
-            Cookie loginCookie = new Cookie("log", "yes");
-            loginCookie.setMaxAge(30*60);
-            response.addCookie(loginCookie);
+        else if(state.equals("login")){
+            User user = new User();
+            request.getSession().setAttribute("user", user);
+            Cookie userCookie = new Cookie("user", "yes");
+            userCookie.setMaxAge(30*60);
+            response.addCookie(userCookie);
             RequestDispatcher rd = request.getRequestDispatcher("index.jsp");
             rd.forward(request, response);
         }
         
-        else if(todo.equals("logout")){
-            Cookie[] cookies = request.getCookies();
-            if(cookies != null){
-                for(Cookie cookie : cookies){
-                    cookie.setMaxAge(0);
-                    response.addCookie(cookie);
-                }
-            }
-            
+        else if(state.equals("logout")){
+            request.getSession().setAttribute("user",null);
             RequestDispatcher rd = request.getRequestDispatcher("index.jsp");
             rd.forward(request, response);
         }
     }
+    /**
+     * load information from cookie to bean
+     * @param request
+     * @param response 
+     */
+    private void loadCookie(HttpServletRequest request, HttpServletResponse response){
+        Cookie cookieList[] = request.getCookies();
+        String isUser = searchCookie(cookieList, "user");
+        if(isUser != null){
+            request.getSession().setAttribute("user", new User());
+        }
+    }
+    
+    private String searchCookie(Cookie cookieList[], String cookieName){
+        if(cookieList != null){
+            for(Cookie cookie : cookieList){
+                if(cookie.getName().equals(cookieName)){
+                    return cookie.getValue();
+                }
+            }
+        }
+        return null;
+    }
 
-    // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
      * Handles the HTTP <code>GET</code> method.
      *

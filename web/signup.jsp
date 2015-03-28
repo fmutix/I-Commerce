@@ -19,7 +19,7 @@
     <body>
         <%@ include file="toolbar.jsp" %>
         <div class="container">
-            <form class="form-signup" action="index.html">
+            <form class="form-signup" action="index.html" method="post">
                 <h2 class="form-signup-heading">Inscription</h2>
                 <label for="inputUsername">Nom</label>
                 <input name="name" type="text" id="inputUsername" class="form-control" placeholder="20 caractères max" required autofocus>

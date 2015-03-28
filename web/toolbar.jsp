@@ -23,7 +23,7 @@
                 <li><a href="#">Dashboard</a></li>
                 <li><a href="#">Settings</a></li>
                 <c:choose>
-                    <c:when test="${cookie.log == null}">
+                    <c:when test="${user == null}">
                         <li><a href="signup.jsp">S'inscrire</a></li>
                         <li><a href="login.jsp">Se connecter</a></li>
                     </c:when>
