@@ -196,18 +196,22 @@ public class DbManager {
 		return itemList;
 	}
 	
-	public boolean isMember(String memberName){
-		boolean isMember = false;
+	public Member getMember(String memberName){
+		Member member = null;
 		try{
 			String query = "SELECT * from APP.MEMBER where NAME='"+memberName+"'";
 			STMT = DB.createStatement();
 			ResultSet rs = STMT.executeQuery(query);
 			if(rs.next()){
-				isMember = true;
+				member = new Member();
+				member.setName(rs.getString("name"));
+				member.setPassword(rs.getString("password"));
+				member.setEmail(rs.getString("email"));
+				member.setGuild(rs.getBoolean("guild"));
 			}
 		}catch(SQLException ex){
 			Logger.getLogger(DbManager.class.getName()).log(Level.SEVERE, null, ex);
 		}
-		return isMember;
+		return member;
 	}
 }

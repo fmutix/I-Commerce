@@ -66,10 +66,9 @@ public class Controller extends HttpServlet {
 			itemList.setItemList(db.selectItems());
 			request.setAttribute("itemlist", itemList);
 			String name = request.getParameter("name");
-			boolean isMember = db.isMember(name);
+			Member user = db.getMember(name);
 			db.close();
-			if(isMember){
-				Member user = new Member();
+			if(user != null){
 				request.getSession().setAttribute("user", user);
 				Cookie userCookie = new Cookie("user", "yes");
 				userCookie.setMaxAge(30*60);
