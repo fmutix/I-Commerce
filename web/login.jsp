@@ -24,7 +24,7 @@
                 <label for="inputUsername" class="sr-only">Nom</label>
                 <input name="name" type="text" id="inputUsername" class="form-control" placeholder="Username" required autofocus>
                 <label for="inputPassword" class="sr-only">Mot de passe</label>
-                <input name="password" type="password" id="inputPassword" class="form-control" placeholder="Password" required>
+                <input name="password" name="password" type="password" id="inputPassword" class="form-control" placeholder="Password" required>
                 <button class="btn btn-lg btn-primary btn-block" type="submit">Go</button>
                 <input type="hidden" name="state" value="login">
             </form>
