@@ -65,13 +65,16 @@ public class Controller extends HttpServlet {
 				itemList.setItemList(db.selectItems());
 				request.setAttribute("itemlist", itemList);
 				String name = request.getParameter("name");
+				String password = request.getParameter("password");
 				Member user = db.getMember(name);
 				
-				if(user != null){
+				if(user != null && user.getPassword().equals(Hasher.digest(password))){
 					request.getSession().setAttribute("user", user);
 					Cookie userCookie = new Cookie("user", name);
 					userCookie.setMaxAge(30*60);
 					response.addCookie(userCookie);
+				}else{
+					nextPage = "portal.jsp";
 				}
 			}
 			break;
