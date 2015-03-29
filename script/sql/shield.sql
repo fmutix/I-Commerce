@@ -35,4 +35,4 @@ INSERT INTO
 	VALUES ('Séraphica', 'Bouclier', 'Bouclier', 7000, 5, 15, 'res/img/objets/obj_62.gif');
 INSERT INTO 
 	APP.ITEM (Name,Type,Category,Price,Defense,Resistance,Evasion,Path)
-	VALUES ('Bouclier songe', 'Bouclier', 'Bouclier', 8200, 5, ,10, 10, 'res/img/objets/obj_63.gif');
+	VALUES ('Bouclier songe', 'Bouclier', 'Bouclier', 8200, 5, 10, 10, 'res/img/objets/obj_63.gif');

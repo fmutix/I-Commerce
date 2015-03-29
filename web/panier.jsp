@@ -40,8 +40,12 @@
 						<td>${shoppingcartitem.value.item.evasion}</td>
 						<td>${shoppingcartitem.value.quantity}</td>
 						<td>
-							<a class="btn btn-primary" href="index.html?state=rmCart&itemname=${shoppingcartitem.value.item.name}"
-							   role="button">&#10008;</a>
+							<form action="index.html">
+							   <button class="btn btn-lg btn-primary" type="submit">&#10008;</button>
+							   <input name="state" type="hidden" value="panier"/>
+							   <input name="actioncart" type="hidden" value="rmCart"/>
+							   <input name="itemname" type="hidden" value="${shoppingcartitem.value.item.name}"/>
+							</form>
 						</td>
 					</tr>
 					<c:set var="sum" value="${sum + shoppingcartitem.value.item.price * shoppingcartitem.value.quantity}"/>
@@ -61,9 +65,10 @@
 						<td>-</td>
 						<td>
 							<c:if test="${sum != null}">
-							<a class="btn btn-primary" href="#"
-							   role="button">Acheter
-							</a>
+								<form action="index.html" method="post">
+									<button class="btn btn-lg btn-primary" type="submit">Acheter</button>
+									<input name="state" type="hidden" value="buy"/>
+								</form>
 							</c:if>
 						</td>
 					</tr>

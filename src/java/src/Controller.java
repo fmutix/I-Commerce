@@ -123,6 +123,32 @@ public class Controller extends HttpServlet {
 			}
 			break;
 			
+			case "panier":{
+				String actionCart = request.getParameter("actioncart");
+				if(actionCart == null){
+					actionCart = "";
+				}
+				switch(actionCart){
+					case "rmCart":{
+						HttpSession session = request.getSession();
+
+						ShoppingCart cart = (ShoppingCart) session.getAttribute("shoppingcart");
+						String itemName = request.getParameter("itemname");
+						if(cart == null){
+							cart = new ShoppingCart();
+							cart.setShoppingCart(new HashMap<String, ShoppingCartItem>());
+						}
+						if(cart.getShoppingCart().containsKey(itemName)){
+							cart.getShoppingCart().remove(itemName);
+						}
+						session.setAttribute("shoppingcart", cart);
+					}
+					break;
+				}
+				
+			}
+			break;
+			
 			case "addCart":{
 				HttpSession session = request.getSession();
 				
@@ -170,19 +196,17 @@ public class Controller extends HttpServlet {
 			}
 			break;
 			
-			case "rmCart":{
+			case "buy":{
 				HttpSession session = request.getSession();
 				
 				ShoppingCart cart = (ShoppingCart) session.getAttribute("shoppingcart");
-				String itemName = request.getParameter("itemname");
 				if(cart == null){
 					cart = new ShoppingCart();
 					cart.setShoppingCart(new HashMap<String, ShoppingCartItem>());
 				}
-				if(cart.getShoppingCart().containsKey(itemName)){
-					cart.getShoppingCart().remove(itemName);
-				}
+				cart.getShoppingCart().clear();
 				session.setAttribute("shoppingcart", cart);
+				nextPage = "buy.jsp";
 			}
 			break;
 			
