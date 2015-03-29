@@ -32,7 +32,7 @@ INSERT INTO
 	VALUES ('Ame mythril', 'Arme', 'Ame', 32, 1, 2000, 'res/img/objets/obj_361.gif');
 INSERT INTO 
 	APP.ITEM (Name,Type,Category,Attack,Magic,Price,Path)
-	VALUES ('Ame effroi', 'Arme', 'Ame', 49, 2, 22	00, 'res/img/objets/obj_362.gif');
+	VALUES ('Ame effroi', 'Arme', 'Ame', 49, 2, 2200, 'res/img/objets/obj_362.gif');
 INSERT INTO 
 	APP.ITEM (Name,Type,Category,Attack,Magic,Price,Path)
 	VALUES ('Ame rukavi', 'Arme', 'Ame', 67, 2, 8100, 'res/img/objets/obj_363.gif');
