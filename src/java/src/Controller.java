@@ -1,8 +1,12 @@
 package src;
 
+import bean.Item;
 import bean.ItemList;
 import bean.Member;
+import bean.ShoppingCart;
+import bean.ShoppingCartItem;
 import java.io.IOException;
+import java.util.HashMap;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.servlet.RequestDispatcher;
@@ -11,6 +15,7 @@ import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 public class Controller extends HttpServlet {
 	
@@ -41,6 +46,15 @@ public class Controller extends HttpServlet {
 				request.setAttribute("itemlist", itemList);
 				db.close();
 			}
+			
+			HttpSession session = request.getSession();
+			
+			ShoppingCart cart = new ShoppingCart();
+			cart = (ShoppingCart) session.getAttribute("shoppingcart");
+			if(cart == null){
+				
+			}
+			
 			RequestDispatcher rd = request.getRequestDispatcher(nextPage);
 			rd.forward(request, response);
 			return;
@@ -103,8 +117,33 @@ public class Controller extends HttpServlet {
 				request.setAttribute("itemlist", itemList);
 			}
 			break;
+			
+			case "addCart":{
+				HttpSession session = request.getSession();
 				
+				ShoppingCart cart = (ShoppingCart) session.getAttribute("shoppingcart");
+				String itemName = request.getParameter("itemname");
+				if(cart == null){
+					cart = new ShoppingCart();
+					cart.setShoppingCart(new HashMap<String, ShoppingCartItem>());
+				}
+				if(!cart.getShoppingCart().containsKey(itemName)){
+					Item item = new Item();
+					ShoppingCartItem shoppingCartItem = new ShoppingCartItem();
+					item = db.getItem(itemName);
+					shoppingCartItem.setName(item.getName());
+					shoppingCartItem.setPrice(item.getPrice());
+					shoppingCartItem.setQuantity(1);
+					cart.getShoppingCart().put(itemName, shoppingCartItem);
+				}
+				else{
+					int quantity = cart.getShoppingCart().get(itemName).getQuantity();
+					cart.getShoppingCart().get(itemName).setQuantity(quantity+1);
+				}
+				session.setAttribute("shoppingcart", cart);
 				
+			}
+			break;
 		}
 		
 		db.close();

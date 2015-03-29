@@ -88,6 +88,33 @@ public class DbManager {
 		}
 	}
 	
+	public Item getItem(String itemName){
+		Item item = new Item();
+		try {
+			String query = "SELECT * FROM APP.ITEM WHERE Name='" + itemName + "'";
+			STMT = DB.createStatement();
+			ResultSet rs = STMT.executeQuery(query);
+			while(rs.next()){
+				item.setName(rs.getString("name"));
+				item.setType(rs.getString("type"));
+				item.setCategory(rs.getString("category"));
+				item.setPrice(rs.getInt("price"));
+				item.setAttack(rs.getInt("attack"));
+				item.setDefense(rs.getInt("defense"));
+				item.setMagic(rs.getInt("magic"));
+				item.setResistance(rs.getInt("resistance"));
+				item.setSpeed(rs.getInt("speed"));
+				item.setMove(rs.getInt("move"));
+				item.setJump(rs.getInt("jump"));
+				item.setEvasion(rs.getInt("evasion"));
+				item.setPath(rs.getString("path"));
+			}
+		} catch (SQLException ex) {
+			Logger.getLogger(DbManager.class.getName()).log(Level.SEVERE, null, ex);
+		}
+		return item;
+	}
+	
 	public HashMap<String, Item> selectItems(){
 		HashMap<String, Item> itemList = new HashMap<String, Item>();
 		try {
