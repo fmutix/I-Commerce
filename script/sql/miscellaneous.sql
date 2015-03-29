@@ -58,23 +58,23 @@ INSERT INTO
 
 INSERT INTO 
 	APP.ITEM (Name,Type,Category,Price,Defense,Resistance,Path)
-	VALUES ('Bague chance', 'Divers', 'Accessoire', 5000, 3, 5, 'res/img/objets/obj_131.gif');
+	VALUES ('Bague Chance', 'Divers', 'Accessoire', 5000, 3, 5, 'res/img/objets/obj_131.gif');
 INSERT INTO 
 	APP.ITEM (Name,Type,Category,Price,Magic,Resistance,Path)
-	VALUES ('Bague magique', 'Divers', 'Accessoire', 1200, 3, 10, 'res/img/objets/obj_132.gif');
+	VALUES ('Bague Magique', 'Divers', 'Accessoire', 1200, 3, 10, 'res/img/objets/obj_132.gif');
 INSERT INTO 
 	APP.ITEM (Name,Type,Category,Price,Path)
-	VALUES ('Bague ange', 'Divers', 'Accessoire', 1700, 'res/img/objets/obj_133.gif');
+	VALUES ('Bague Ange', 'Divers', 'Accessoire', 1700, 'res/img/objets/obj_133.gif');
 INSERT INTO 
 	APP.ITEM (Name,Type,Category,Price,Defense,Resistance,Path)
-	VALUES ('Broche scarabée', 'Divers', 'Accessoire', 5000, 2, 8, 'res/img/objets/obj_134.gif');
+	VALUES ('Broche Scarabée', 'Divers', 'Accessoire', 5000, 2, 8, 'res/img/objets/obj_134.gif');
 INSERT INTO 
 	APP.ITEM (Name,Type,Category,Price,Defense,Resistance,Path)
-	VALUES ('Boucle rubis', 'Divers', 'Accessoire', 3000, 3, 6, 'res/img/objets/obj_135.gif');
+	VALUES ('Boucle Rubis', 'Divers', 'Accessoire', 3000, 3, 6, 'res/img/objets/obj_135.gif');
 INSERT INTO 
 	APP.ITEM (Name,Type,Category,Price,Defense,Magic,Resistance,Speed,Path)
-	VALUES ('Brassard étoile', 'Divers', 'Accessoire', 500, 4, 6, 4, 2, 'res/img/objets/obj_136.gif');
+	VALUES ('Brassard Etoile', 'Divers', 'Accessoire', 500, 4, 6, 4, 2, 'res/img/objets/obj_136.gif');
 INSERT INTO 
 	APP.ITEM (Name,Type,Category,Price,Defense,Resistance,Path)
-	VALUES ('Gemme mindu', 'Divers', 'Accessoire', 500, 3, 3, 'res/img/objets/obj_137.gif');
+	VALUES ('Gemme Mindu', 'Divers', 'Accessoire', 500, 3, 3, 'res/img/objets/obj_137.gif');
 

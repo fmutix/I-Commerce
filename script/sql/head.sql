@@ -4,7 +4,7 @@ INSERT INTO
 	VALUES ('Casque Romain', 'Tête', 'Casque', 250, 4, 2, 'res/img/objets/obj_1.gif');
 INSERT INTO 
 	APP.ITEM (Name,Type,Category,Price,Defense,Resistance,Path)
-	VALUES ('Casque fer', 'Tête', 'Casque', 600, 5, 3, 'res/img/objets/obj_2.gif');
+	VALUES ('Casque Fer', 'Tête', 'Casque', 600, 5, 3, 'res/img/objets/obj_2.gif');
 INSERT INTO 
 	APP.ITEM (Name,Type,Category,Price,Defense,Resistance,Path)
 	VALUES ('Casque Teunon', 'Tête', 'Casque', 1250, 7, 3, 'res/img/objets/obj_30.gif');
