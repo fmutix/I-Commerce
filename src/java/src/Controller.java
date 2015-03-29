@@ -5,6 +5,7 @@ import bean.ItemList;
 import bean.Member;
 import bean.ShoppingCart;
 import bean.ShoppingCartItem;
+import bean.Types;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.logging.Level;
@@ -192,6 +193,9 @@ public class Controller extends HttpServlet {
 				nextPage = "items.jsp";
 			}
 		}
+		
+		Types navBar = db.getType();
+		request.getSession().setAttribute("navBar", navBar);
 		
 		db.close();
 		RequestDispatcher rd = request.getRequestDispatcher(nextPage);
