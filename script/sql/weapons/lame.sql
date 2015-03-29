@@ -24,7 +24,7 @@ INSERT INTO
 	APP.ITEM (Name,Type,Category,Price,Attack,Defense,Resistance,Path)
 	VALUES ('Lame kwigon', 'Arme', 'Lame', 5000, 40, 3, 3, 'res/img/objets/obj_170.gif');
 INSERT INTO
-	APP.ITEM (Name,Type,Category,Price,Attack,MagicPath)
+	APP.ITEM (Name,Type,Category,Price,Attack,Magic,Path)
 	VALUES ('Lame ogun', 'Arme', 'Lame', 7500, 42, 2, 'res/img/objets/obj_171.gif');
 INSERT INTO
 	APP.ITEM (Name,Type,Category,Price,Attack,Path)
