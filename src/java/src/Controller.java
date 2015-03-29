@@ -184,6 +184,13 @@ public class Controller extends HttpServlet {
 				session.setAttribute("shoppingcart", cart);
 			}
 			break;
+			
+			case "browse":{
+				ItemList itemList = new ItemList();
+				itemList.setItemList(db.selectItems());
+				request.setAttribute("itemlist", itemList);
+				nextPage = "items.jsp";
+			}
 		}
 		
 		db.close();
