@@ -238,6 +238,7 @@ public class DbManager {
 				String type = rs.getString("type");
 				list.put(type, getCategory(type));
 			}
+			types.setList(list);
 		}catch (SQLException ex){
 			Logger.getLogger(DbManager.class.getName()).log(Level.SEVERE, null, ex);
 		}
