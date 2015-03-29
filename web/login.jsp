@@ -19,7 +19,7 @@
     <body>
         <%@ include file="toolbar.jsp" %>
         <div class="container">
-            <form class="form-login" action="index.html" scope="session">
+            <form class="form-login" action="index.html" scope="session" method="post">
                 <h2 class="form-login-heading">Connexion</h2>
                 <label for="inputUsername" class="sr-only">Nom</label>
                 <input name="name" type="text" id="inputUsername" class="form-control" placeholder="Username" required autofocus>
