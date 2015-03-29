@@ -25,7 +25,7 @@
 			<div class="row">
 				<div class="col-sm-3 col-md-2 sidebar">
 					<ul class="nav nav-sidebar">
-						<li><a href="#">Panier</a></li>
+						<li><a href="index.html?state=panier">Panier</a></li>
 					</ul>
 					<ul class="nav nav-sidebar">
 						<li><a href="index.html?state=type&type=Tête">Tête</a></li>
@@ -41,7 +41,14 @@
 						<li><a href="index.html?state=category&category=Toge">Toge</a></li>
 					</ul>
 				</div>
-				<%@include file="dashboard.jsp" %>
+				<c:choose>
+					<c:when test="${param.state == 'panier'}">
+						<%@include file="panier.jsp" %>
+					</c:when>
+					<c:otherwise>
+						<%@include file="dashboard.jsp" %>
+					</c:otherwise>
+				</c:choose>
 			</div>
 		</div>
 		
@@ -51,5 +58,5 @@
 		<script src="res/js/jquery-1.11.2.js"></script>
 		<script src="res/js/bootstrap.min.js"></script>
 	</body>
-    </body>
+</body>
 </html>

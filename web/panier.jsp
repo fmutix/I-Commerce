@@ -2,7 +2,7 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
-	<h1 class="page-header">Dashboard</h1>
+	<h1 class="page-header">Panier</h1>
 	
 	<div class="row placeholders">
 		<div class="col-xs-6 col-sm-3 placeholder">
@@ -27,7 +27,7 @@
 		</div>
 	</div>
 	
-	<h2 class="sub-header">Panier</h2>
+	<h2 class="sub-header">Liste des produits</h2>
 	<div class="table-responsive">
 		<table id="items-table" class="table table-striped">
 			<thead>
