@@ -22,7 +22,6 @@
 			</ol>
 			<div class="carousel-inner" role="listbox">
 				<div class="item active">
-					<img class="first-slide" src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" alt="First slide">
 					<div class="container">
 						<div class="carousel-caption">
 							<h1>Bienvenue sur Ivalice Commerce, kupo !</h1>
@@ -41,7 +40,6 @@
 					</div>
 				</div>
 				<div class="item">
-					<img class="second-slide" src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" alt="Second slide">
 					<div class="container">
 						<div class="carousel-caption">
 							<h1>Déjà membre ?</h1>
@@ -57,7 +55,6 @@
 					</div>
 				</div>
 				<div class="item">
-					<img class="third-slide" src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" alt="Third slide">
 					<div class="container">
 						<div class="carousel-caption">
 							<h1>Vous êtes une guilde ?</h1>
