@@ -4,19 +4,19 @@ import java.io.Serializable;
 import java.util.List;
 
 public class Categorys implements Serializable{
-	private List<Types> list;
+	private List<String> list;
 
 	/**
 	 * @return the list
 	 */
-	public List<Types> getList() {
+	public List<String> getList() {
 		return list;
 	}
 
 	/**
 	 * @param list the list to set
 	 */
-	public void setList(List<Types> list) {
+	public void setList(List<String> list) {
 		this.list = list;
 	}
 }

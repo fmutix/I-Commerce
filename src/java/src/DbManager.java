@@ -1,7 +1,9 @@
 package src;
 
+import bean.Categorys;
 import bean.Item;
 import bean.Member;
+import bean.Types;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.sql.Connection;
@@ -9,8 +11,10 @@ import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.LinkedHashMap;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -223,32 +227,38 @@ public class DbManager {
 		return member;
 	}
 	
-	public void getType(){
+	public Types getType(){
+		Types types = new Types();
 		try{
 			String query = "select type from APP.ITEM group by type";
 			STMT = DB.createStatement();
 			ResultSet rs = STMT.executeQuery(query);
+			HashMap<String,Categorys> list = new HashMap<>();
 			while(rs.next()){
 				String type = rs.getString("type");
-				System.out.println(type);
-				getCategory(type);
-				System.out.println();
+				list.put(type, getCategory(type));
 			}
 		}catch (SQLException ex){
 			Logger.getLogger(DbManager.class.getName()).log(Level.SEVERE, null, ex);
 		}
+		return types;
 	}
 	
-	public void getCategory(String type){
+	public Categorys getCategory(String type){
+		Categorys categorys = new Categorys();
 		try {
 			String query = "select category from APP.ITEM where type='"+type+"' group by category";
 			STMT = DB.createStatement();
 			ResultSet rs = STMT.executeQuery(query);
+			List<String> list = new ArrayList<>();
 			while(rs.next()){
-				System.out.println("\t" + rs.getString("category"));
+				String category = rs.getString("category");
+				list.add(category);
 			}
+			categorys.setList(list);
 		} catch (SQLException ex) {
 			Logger.getLogger(DbManager.class.getName()).log(Level.SEVERE, null, ex);
 		}
+		return categorys;
 	}
 }
