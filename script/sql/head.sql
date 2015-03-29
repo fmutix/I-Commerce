@@ -1,26 +1,26 @@
 /* Casques */
 INSERT INTO 
 	APP.ITEM (Name,Type,Category,Price,Defense,Resistance,Path)
-	VALUES ('Casque Romain', 'Tête', 'Casque', 250, 4, 2, 'res/img/objets/obj_1.gif');
+	VALUES ('Casque romain', 'Tête', 'Casque', 250, 4, 2, 'res/img/objets/obj_1.gif');
 INSERT INTO 
 	APP.ITEM (Name,Type,Category,Price,Defense,Resistance,Path)
 	VALUES ('Casque fer', 'Tête', 'Casque', 600, 5, 3, 'res/img/objets/obj_2.gif');
 INSERT INTO 
 	APP.ITEM (Name,Type,Category,Price,Defense,Resistance,Path)
-	VALUES ('Casque Teunon', 'Tête', 'Casque', 1250, 7, 3, 'res/img/objets/obj_30.gif');
+	VALUES ('Casque teunon', 'Tête', 'Casque', 1250, 7, 3, 'res/img/objets/obj_30.gif');
 INSERT INTO 
 	APP.ITEM (Name,Type,Category,Price,Defense,Resistance,Path)
-	VALUES ('Casque Noble', 'Tête', 'Casque', 2000, 9, 4, 'res/img/objets/obj_31.gif');
+	VALUES ('Casque noble', 'Tête', 'Casque', 2000, 9, 4, 'res/img/objets/obj_31.gif');
 INSERT INTO 
 	APP.ITEM (Name,Type,Category,Price,Defense,Resistance,Path)
-	VALUES ('Casque Diamant', 'Tête', 'Casque', 5000, 11, 5, 'res/img/objets/obj_32.gif');
+	VALUES ('Casque diamant', 'Tête', 'Casque', 5000, 11, 5, 'res/img/objets/obj_32.gif');
 INSERT INTO 
 	APP.ITEM (Name,Type,Category,Price,Defense,Resistance,Path)
 	VALUES ('Casque Genji', 'Tête', 'Casque', 10000, 15, 6, 'res/img/objets/obj_33.gif');
 	
 INSERT INTO 
 	APP.ITEM (Name,Type,Category,Price,Defense,Resistance,Path)
-	VALUES ('Casque Parade', 'Tête', 'Casque', 8000, 13, 4, 'res/img/objets/obj_34.gif');
+	VALUES ('Casque parade', 'Tête', 'Casque', 8000, 13, 4, 'res/img/objets/obj_34.gif');
 INSERT INTO 
 	APP.ITEM (Name,Type,Category,Price,Defense,Resistance,Path)
 	VALUES ('Casque Hanya', 'Tête', 'Casque', 10000, 12, 8, 'res/img/objets/obj_35.gif');
@@ -44,34 +44,34 @@ INSERT INTO
 
 INSERT INTO 
 	APP.ITEM (Name,Type,Category,Price,Defense,Resistance,Path)
-	VALUES ('Melon Plume', 'Tête', 'Chapeau', 175, 2, 4, 'res/img/objets/obj_14.gif');
+	VALUES ('Melon plume', 'Tête', 'Chapeau', 175, 2, 4, 'res/img/objets/obj_14.gif');
 INSERT INTO 
 	APP.ITEM (Name,Type,Category,Price,Defense,Resistance,Path)
-	VALUES ('Casque Magik', 'Tête', 'Chapeau', 900, 3, 3, 'res/img/objets/obj_40.gif');
+	VALUES ('Casque magik', 'Tête', 'Chapeau', 900, 3, 3, 'res/img/objets/obj_40.gif');
 INSERT INTO 
 	APP.ITEM (Name,Type,Category,Price,Defense,Resistance,Evasion,Path)
-	VALUES ('Béret Vert', 'Tête', 'Chapeau', 400, 2, 2, 2, 'res/img/objets/obj_15.gif');
+	VALUES ('Béret vert', 'Tête', 'Chapeau', 400, 2, 2, 2, 'res/img/objets/obj_15.gif');
 INSERT INTO 
 	APP.ITEM (Name,Type,Category,Price,Attack,Defense,Resistance,Path)
 	VALUES ('Bandeau', 'Tête', 'Chapeau', 1500, 5, 6, 2, 'res/img/objets/obj_41.gif');
 INSERT INTO 
 	APP.ITEM (Name,Type,Category,Price,Defense,Magic,Resistance,Path)
-	VALUES ('Coiffe Mage', 'Tête', 'Chapeau', 1000, 3, 1, 10, 'res/img/objets/obj_29.gif');
+	VALUES ('Coiffe mage', 'Tête', 'Chapeau', 1000, 3, 1, 10, 'res/img/objets/obj_29.gif');
 INSERT INTO 
 	APP.ITEM (Name,Type,Category,Price,Defense,Magic,Resistance,Path)
-	VALUES ('Barrette Or', 'Tête', 'Chapeau', 2000, 4, 2, 12, 'res/img/objets/obj_42.gif');
+	VALUES ('Barrette or', 'Tête', 'Chapeau', 2000, 4, 2, 12, 'res/img/objets/obj_42.gif');
 INSERT INTO 
 	APP.ITEM (Name,Type,Category,Price,Defense,Resistance,Evasion,Path)
-	VALUES ('Coiffe Voleur', 'Tête', 'Chapeau', 3000, 8, 6, 7, 'res/img/objets/obj_43.gif');
+	VALUES ('Coiffe voleur', 'Tête', 'Chapeau', 3000, 8, 6, 7, 'res/img/objets/obj_43.gif');
 INSERT INTO 
 	APP.ITEM (Name,Type,Category,Price,Defense,Magic,Resistance,Path)
-	VALUES ('Chapeau Noir', 'Tête', 'Chapeau', 4000, 4, 4, 16, 'res/img/objets/obj_44.gif');
+	VALUES ('Chapeau noir', 'Tête', 'Chapeau', 4000, 4, 4, 16, 'res/img/objets/obj_44.gif');
 INSERT INTO 
 	APP.ITEM (Name,Type,Category,Price,Defense,Resistance,Path)
-	VALUES ('Chapeau Blanc', 'Tête', 'Chapeau', 4000, 4, 14, 'res/img/objets/obj_45.gif');
+	VALUES ('Chapeau blanc', 'Tête', 'Chapeau', 4000, 4, 14, 'res/img/objets/obj_45.gif');
 INSERT INTO 
 	APP.ITEM (Name,Type,Category,Price,Defense,Magic,Resistance,Speed,Move,Jump,Evasion,Path)
-	VALUES ('Coiffe Acacia', 'Tête', 'Chapeau', 7500, 2, 5, 2, 2, 1, 1, 5, 'res/img/objets/obj_46.gif');
+	VALUES ('Coiffe acacia', 'Tête', 'Chapeau', 7500, 2, 5, 2, 2, 1, 1, 5, 'res/img/objets/obj_46.gif');
 INSERT INTO 
 	APP.ITEM (Name,Type,Category,Price,Defense,Resistance,Path)
 	VALUES ('Tiare', 'Tête', 'Chapeau', 6000, 8, 20, 'res/img/objets/obj_47.gif');

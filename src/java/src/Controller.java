@@ -146,6 +146,28 @@ public class Controller extends HttpServlet {
 				session.setAttribute("shoppingcart", cart);
 			}
 			break;
+			
+			case "delCart":{
+				HttpSession session = request.getSession();
+				
+				ShoppingCart cart = (ShoppingCart) session.getAttribute("shoppingcart");
+				String itemName = request.getParameter("itemname");
+				if(cart == null){
+					cart = new ShoppingCart();
+					cart.setShoppingCart(new HashMap<String, ShoppingCartItem>());
+				}
+				if(cart.getShoppingCart().containsKey(itemName)){
+					int quantity = cart.getShoppingCart().get(itemName).getQuantity();
+					if(quantity > 0){
+						cart.getShoppingCart().get(itemName).setQuantity(quantity-1);
+					}
+					if(quantity == 0){
+						cart.getShoppingCart().remove(itemName);
+					}
+				}
+				session.setAttribute("shoppingcart", cart);
+			}
+			break;
 		}
 		
 		db.close();
