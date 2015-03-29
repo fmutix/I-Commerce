@@ -37,7 +37,7 @@
 					<td>${item.value.evasion}</td>
 					<td>
 						<a class="btn btn-primary" href="index.html?state=addCart&itemname=${item.value.name}" role="button">+</a> 
-						<a class="btn btn-primary" href="index.html?state=delCart&itemname=${item.value.name}" role="button">-</a>
+						<a class="btn btn-primary" href="index.html?state=minusCart&itemname=${item.value.name}" role="button">-</a>
 					</td>
 				</tr>
 			</c:forEach>

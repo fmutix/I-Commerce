@@ -147,7 +147,7 @@ public class Controller extends HttpServlet {
 			}
 			break;
 			
-			case "delCart":{
+			case "minusCart":{
 				HttpSession session = request.getSession();
 				
 				ShoppingCart cart = (ShoppingCart) session.getAttribute("shoppingcart");
@@ -164,6 +164,22 @@ public class Controller extends HttpServlet {
 					if(quantity == 0){
 						cart.getShoppingCart().remove(itemName);
 					}
+				}
+				session.setAttribute("shoppingcart", cart);
+			}
+			break;
+			
+			case "rmCart":{
+				HttpSession session = request.getSession();
+				
+				ShoppingCart cart = (ShoppingCart) session.getAttribute("shoppingcart");
+				String itemName = request.getParameter("itemname");
+				if(cart == null){
+					cart = new ShoppingCart();
+					cart.setShoppingCart(new HashMap<String, ShoppingCartItem>());
+				}
+				if(cart.getShoppingCart().containsKey(itemName)){
+					cart.getShoppingCart().remove(itemName);
 				}
 				session.setAttribute("shoppingcart", cart);
 			}

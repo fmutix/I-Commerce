@@ -19,6 +19,7 @@
 					<th>Saut</th>
 					<th>Esquive</th>
 					<th>Quantité</th>
+					<th></th>
 				</tr>
 			</thead>
 			<tbody>
@@ -37,8 +38,26 @@
 						<td>${shoppingcartitem.value.item.jump}</td>
 						<td>${shoppingcartitem.value.item.evasion}</td>
 						<td>${shoppingcartitem.value.quantity}</td>
+						<td>
+							<a class="btn btn-primary" href="index.html?state=rmCart&itemname=${shoppingcartitem.value.item.name}" role="button">    &#10008;
+</a> 
+						</td>
 					</tr>
 				</c:forEach>
+					<tr>
+						<td>Total</td>
+						<td>-</td>
+						<td>gils</td>
+						<td>-</td>
+						<td>-</td>
+						<td>-</td>
+						<td>-</td>
+						<td>-</td>
+						<td>-</td>
+						<td>-</td>
+						<td>-</td>
+						<td>-</td>
+					</tr>
 			</tbody>
 		</table>
 	</div>
