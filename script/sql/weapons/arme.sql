@@ -5,7 +5,7 @@ INSERT INTO
 	VALUES ('Arme Aiot', 'Arme', 'Arme', 27, 1000, 'res/img/objets/obj_364.gif');
 INSERT INTO 
 	APP.ITEM (Name,Type,Category,Attack,Price,Path)
-	VALUES ('Canon d\'argent', 'Arme', 'Arme', 31, 1500, 'res/img/objets/obj_365.gif');
+	VALUES ('Canon d''argent', 'Arme', 'Arme', 31, 1500, 'res/img/objets/obj_365.gif');
 INSERT INTO 
 	APP.ITEM (Name,Type,Category,Attack,Price,Path)
 	VALUES ('Arme émeute', 'Arme', 'Arme', 31, 2500, 'res/img/objets/obj_366.gif');
@@ -35,4 +35,4 @@ INSERT INTO
 	VALUES ('Bindsnipe', 'Arme', 'Arme', 47, 10000, 'res/img/objets/obj_374.gif');
 INSERT INTO 
 	APP.ITEM (Name,Type,Category,Attack,Price,Path)
-	VALUES ('Arme d\'appel', 'Arme', 'Arme', 59, 15000, 'res/img/objets/obj_375.gif');
+	VALUES ('Arme d''appel', 'Arme', 'Arme', 59, 15000, 'res/img/objets/obj_375.gif');

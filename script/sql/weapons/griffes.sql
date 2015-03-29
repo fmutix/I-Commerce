@@ -2,7 +2,7 @@
 
 INSERT INTO 
 	APP.ITEM (Name,Type,Category,Attack,Evasion,Price,Path)
-	VALUES ('Poings d\'acier', 'Arme', 'Griffes', 29, 1, 250, 'res/img/objets/obj_338.gif');
+	VALUES ('Poings d''acier', 'Arme', 'Griffes', 29, 1, 250, 'res/img/objets/obj_338.gif');
 INSERT INTO 
 	APP.ITEM (Name,Type,Category,Attack,Evasion,Price,Path)
 	VALUES ('Rising Sun', 'Arme', 'Griffes', 31, 1, 500, 'res/img/objets/obj_339.gif');
