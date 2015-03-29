@@ -222,4 +222,17 @@ public class DbManager {
 		}
 		return member;
 	}
+	
+	public void getCategory(){
+		try{
+			String query = "select category from APP.ITEM group by category";
+			STMT = DB.createStatement();
+			ResultSet rs = STMT.executeQuery(query);
+			while(rs.next()){
+				System.out.println(rs.getString("category"));
+			}
+		}catch (SQLException ex){
+			Logger.getLogger(DbManager.class.getName()).log(Level.SEVERE, null, ex);
+		}
+	}
 }
