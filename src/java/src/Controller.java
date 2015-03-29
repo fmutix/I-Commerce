@@ -43,7 +43,7 @@ public class Controller extends HttpServlet {
 				db.connect();
 				ItemList itemList = new ItemList();
 				itemList.setItemList(db.selectItems());
-				request.setAttribute("itemlist", itemList);
+				request.getSession().setAttribute("itemlist", itemList);
 				db.close();
 			}
 			
@@ -79,7 +79,7 @@ public class Controller extends HttpServlet {
 			case "login":{
 				ItemList itemList = new ItemList();
 				itemList.setItemList(db.selectItems());
-				request.setAttribute("itemlist", itemList);
+				request.getSession().setAttribute("itemlist", itemList);
 				String name = request.getParameter("name");
 				String password = request.getParameter("password");
 				Member user = db.getMember(name);
@@ -110,7 +110,7 @@ public class Controller extends HttpServlet {
 				String type = request.getParameter("type");
 				ItemList itemList = new ItemList();
 				itemList.setItemList(db.selectItemsByType(type));
-				request.setAttribute("itemlist", itemList);
+				request.getSession().setAttribute("itemlist", itemList);
 			}
 			break;
 				
@@ -118,7 +118,7 @@ public class Controller extends HttpServlet {
 				String category = request.getParameter("category");
 				ItemList itemList = new ItemList();
 				itemList.setItemList(db.selectItemsByCategory(category));
-				request.setAttribute("itemlist", itemList);
+				request.getSession().setAttribute("itemlist", itemList);
 			}
 			break;
 			
@@ -144,7 +144,6 @@ public class Controller extends HttpServlet {
 					cart.getShoppingCart().get(itemName).setQuantity(quantity+1);
 				}
 				session.setAttribute("shoppingcart", cart);
-				nextPage = "index.jsp";
 			}
 			break;
 		}
