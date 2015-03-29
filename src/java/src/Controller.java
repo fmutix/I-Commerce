@@ -102,6 +102,17 @@ public class Controller extends HttpServlet {
 					userCookie.setMaxAge(0);
 					response.addCookie(userCookie);
 				}
+				
+				HttpSession session = request.getSession();
+				
+				ShoppingCart cart = (ShoppingCart) session.getAttribute("shoppingcart");
+				if(cart == null){
+					cart = new ShoppingCart();
+					cart.setShoppingCart(new HashMap<String, ShoppingCartItem>());
+				}
+				cart.getShoppingCart().clear();
+				session.setAttribute("shoppingcart", cart);
+				
 				request.getSession().setAttribute("user", null);
 				nextPage = "portal.jsp";
 			}
@@ -125,13 +136,14 @@ public class Controller extends HttpServlet {
 			
 			case "panier":{
 				String actionCart = request.getParameter("actioncart");
+				Member member = new Member();
+				HttpSession session = request.getSession();
+				member = (Member) session.getAttribute("user");
 				if(actionCart == null){
 					actionCart = "";
 				}
 				switch(actionCart){
 					case "rmCart":{
-						HttpSession session = request.getSession();
-
 						ShoppingCart cart = (ShoppingCart) session.getAttribute("shoppingcart");
 						String itemName = request.getParameter("itemname");
 						if(cart == null){

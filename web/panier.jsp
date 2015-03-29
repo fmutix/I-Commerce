@@ -24,6 +24,7 @@
 			</thead>
 			<tbody>
 				<jsp:useBean id="shoppingcart" class="bean.ShoppingCart" scope="session"/>
+				<jsp:useBean id="user" class="bean.Member" scope="session"/>
 				<c:set var="total" value="${0}"/> 
 				<c:forEach var="shoppingcartitem" items="${shoppingcart.shoppingCart}">
 					<tr>
@@ -53,7 +54,17 @@
 					<tr>
 						<td>Total</td>
 						<td>-</td>
-						<td><c:out value="${sum}"/></td>
+						
+							<c:choose>
+								<c:when test="${user.guild == true}">
+									<td style="color:#ff0000;"><c:out value="${sum-sum*5/100}"/> (-5%)</td>
+								</c:when>
+								<c:otherwise>
+									<td><c:out value="${sum}"/></td>
+								</c:otherwise>
+							
+							</c:choose>
+						
 						<td>-</td>
 						<td>-</td>
 						<td>-</td>
