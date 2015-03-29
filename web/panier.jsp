@@ -2,32 +2,7 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
-	<h1 class="page-header">Panier</h1>
-	
-	<div class="row placeholders">
-		<div class="col-xs-6 col-sm-3 placeholder">
-			<img data-src="holder.js/200x200/auto/sky" class="img-responsive" alt="Generic placeholder thumbnail">
-			<h4>Label</h4>
-			<span class="text-muted">Something else</span>
-		</div>
-		<div class="col-xs-6 col-sm-3 placeholder">
-			<img data-src="holder.js/200x200/auto/vine" class="img-responsive" alt="Generic placeholder thumbnail">
-			<h4>Label</h4>
-			<span class="text-muted">Something else</span>
-		</div>
-		<div class="col-xs-6 col-sm-3 placeholder">
-			<img data-src="holder.js/200x200/auto/sky" class="img-responsive" alt="Generic placeholder thumbnail">
-			<h4>Label</h4>
-			<span class="text-muted">Something else</span>
-		</div>
-		<div class="col-xs-6 col-sm-3 placeholder">
-			<img data-src="holder.js/200x200/auto/vine" class="img-responsive" alt="Generic placeholder thumbnail">
-			<h4>Label</h4>
-			<span class="text-muted">Something else</span>
-		</div>
-	</div>
-	
-	<h2 class="sub-header">Liste des produits</h2>
+	<h2 class="sub-header">Votre panier</h2>
 	<div class="table-responsive">
 		<table id="items-table" class="table table-striped">
 			<thead>
@@ -43,32 +18,27 @@
 					<th>Case</th>
 					<th>Saut</th>
 					<th>Esquive</th>
-					<th>Action panier</th>
+					<th>Quantité</th>
 				</tr>
 			</thead>
 			<tbody>
-				panier bean ...
-				<%--				<jsp:useBean id="itemlist" class="bean.ItemList" scope="request"/>
-				<c:forEach var="item" items="${itemlist.itemList}">
+				<jsp:useBean id="shoppingcart" class="bean.ShoppingCart" scope="session"/>
+				<c:forEach var="shoppingcartitem" items="${shoppingcart.shoppingCart}">
 					<tr>
-						<td><img src="${item.value.path}" /></td>
-						<td>${item.value.name}</td>
-						<td>${item.value.price}</td>
-						<td>${item.value.attack}</td>
-						<td>${item.value.defense}</td>
-						<td>${item.value.magic}</td>
-						<td>${item.value.resistance}</td>
-						<td>${item.value.speed}</td>
-						<td>${item.value.move}</td>
-						<td>${item.value.jump}</td>
-						<td>${item.value.evasion}</td>
-						<td>
-							<a class="btn btn-primary" href="items.jsp" role="button">+</a> 
-							<a class="btn btn-primary" href="items.jsp" role="button">-</a>
-						</td>
+						<td><img src="${shoppingcartitem.value.item.path}" /></td>
+						<td>${shoppingcartitem.value.item.name}</td>
+						<td>${shoppingcartitem.value.item.price}</td>
+						<td>${shoppingcartitem.value.item.attack}</td>
+						<td>${shoppingcartitem.value.item.defense}</td>
+						<td>${shoppingcartitem.value.item.magic}</td>
+						<td>${shoppingcartitem.value.item.resistance}</td>
+						<td>${shoppingcartitem.value.item.speed}</td>
+						<td>${shoppingcartitem.value.item.move}</td>
+						<td>${shoppingcartitem.value.item.jump}</td>
+						<td>${shoppingcartitem.value.item.evasion}</td>
+						<td>${shoppingcartitem.value.quantity}</td>
 					</tr>
 				</c:forEach>
-				--%>
 			</tbody>
 		</table>
 	</div>

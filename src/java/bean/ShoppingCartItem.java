@@ -3,21 +3,21 @@ package bean;
 import java.io.Serializable;
 
 public class ShoppingCartItem implements Serializable{
-	private Item name;
+	private Item item;
 	private int quantity;
 
 	/**
-	 * @return the name
+	 * @return the item
 	 */
-	public Item getName() {
-		return name;
+	public Item getItem() {
+		return item;
 	}
 
 	/**
-	 * @param name the name to set
+	 * @param item the item to set
 	 */
-	public void setName(Item name) {
-		this.name = name;
+	public void setItem(Item item) {
+		this.item = item;
 	}
 
 	/**

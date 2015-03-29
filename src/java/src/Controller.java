@@ -49,11 +49,11 @@ public class Controller extends HttpServlet {
 			
 			HttpSession session = request.getSession();
 			
-			ShoppingCart cart = new ShoppingCart();
-			cart = (ShoppingCart) session.getAttribute("shoppingcart");
-			if(cart == null){
-				
-			}
+			ShoppingCart cart = (ShoppingCart) session.getAttribute("shoppingcart");
+				if(cart == null){
+					cart = new ShoppingCart();
+					cart.setShoppingCart(new HashMap<String, ShoppingCartItem>());
+				}
 			
 			RequestDispatcher rd = request.getRequestDispatcher(nextPage);
 			rd.forward(request, response);
@@ -135,8 +135,7 @@ public class Controller extends HttpServlet {
 					Item item = new Item();
 					ShoppingCartItem shoppingCartItem = new ShoppingCartItem();
 					item = db.getItem(itemName);
-					shoppingCartItem.setName(item.getName());
-					shoppingCartItem.setPrice(item.getPrice());
+					shoppingCartItem.setItem(item);
 					shoppingCartItem.setQuantity(1);
 					cart.getShoppingCart().put(itemName, shoppingCartItem);
 				}
@@ -145,7 +144,7 @@ public class Controller extends HttpServlet {
 					cart.getShoppingCart().get(itemName).setQuantity(quantity+1);
 				}
 				session.setAttribute("shoppingcart", cart);
-				
+				nextPage = "index.jsp";
 			}
 			break;
 		}
