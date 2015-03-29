@@ -65,12 +65,14 @@ public class Controller extends HttpServlet {
 		switch(state){
 			
 			case "signup":{
-				Member member = new Member();
-				member.setName(request.getParameter("name"));
-				member.setPassword(request.getParameter("password"));
-				member.setEmail(request.getParameter("email"));
-				member.setGuild(request.getParameter("guild").equals("Oui"));
-				db.insertMember(member);
+				Member user = new Member();
+				user.setName(request.getParameter("name"));
+				String password = request.getParameter("password");
+				user.setPassword(Hasher.digest(password));
+				user.setEmail(request.getParameter("email"));
+				user.setGuild(request.getParameter("guild").equals("Oui"));
+				request.getSession().setAttribute("user", user);
+				db.insertMember(user);
 			}
 			break;
 				
@@ -95,8 +97,10 @@ public class Controller extends HttpServlet {
 				
 			case "logout":{
 				Cookie userCookie = searchCookie(request.getCookies(), "user");
-				userCookie.setMaxAge(0);
-				response.addCookie(userCookie);
+				if(userCookie != null){
+					userCookie.setMaxAge(0);
+					response.addCookie(userCookie);
+				}
 				request.getSession().setAttribute("user", null);
 				nextPage = "portal.jsp";
 			}

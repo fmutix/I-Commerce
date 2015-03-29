@@ -72,11 +72,10 @@ public class DbManager {
 		String email = member.getEmail();
 		Boolean guild = member.getGuild();
 		
-		String out = Hasher.digest(password);
 		
 		String query = "INSERT INTO APP.MEMBER (Name, Password, Email, Guild) VALUES" +
 				  "('" + name + "'," +
-				  "'" + out + "'," +
+				  "'" + password + "'," +
 				  "'" + email + "'," +
 				  guild + ")";
 		try {
