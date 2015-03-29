@@ -34,7 +34,7 @@
 								La livraison sera faite par le Mog Poste, kupo.
 							</p>
 							<form action="index.html" method="post">
-								<button class="btn btn-lg btn-primary btn-block" type="submit">Voir les articles</button>
+								<button class="btn btn-lg btn-primary" type="submit">Voir les articles</button>
 								<input type="hidden" name="state" value="browse">
 							</form>
 						</div>
