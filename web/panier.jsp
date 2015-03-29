@@ -19,11 +19,12 @@
 					<th>Saut</th>
 					<th>Esquive</th>
 					<th>Quantité</th>
-					<th></th>
+					<th>Action</th>
 				</tr>
 			</thead>
 			<tbody>
 				<jsp:useBean id="shoppingcart" class="bean.ShoppingCart" scope="session"/>
+				<c:set var="total" value="${0}"/> 
 				<c:forEach var="shoppingcartitem" items="${shoppingcart.shoppingCart}">
 					<tr>
 						<td><img src="${shoppingcartitem.value.item.path}" /></td>
@@ -39,15 +40,16 @@
 						<td>${shoppingcartitem.value.item.evasion}</td>
 						<td>${shoppingcartitem.value.quantity}</td>
 						<td>
-							<a class="btn btn-primary" href="index.html?state=rmCart&itemname=${shoppingcartitem.value.item.name}" role="button">    &#10008;
-</a> 
+							<a class="btn btn-primary" href="index.html?state=rmCart&itemname=${shoppingcartitem.value.item.name}"
+							   role="button">&#10008;</a>
 						</td>
 					</tr>
+					<c:set var="sum" value="${sum + shoppingcartitem.value.item.price * shoppingcartitem.value.quantity}"/>
 				</c:forEach>
 					<tr>
 						<td>Total</td>
 						<td>-</td>
-						<td>gils</td>
+						<td><c:out value="${sum}"/></td>
 						<td>-</td>
 						<td>-</td>
 						<td>-</td>
@@ -57,6 +59,13 @@
 						<td>-</td>
 						<td>-</td>
 						<td>-</td>
+						<td>
+							<c:if test="${sum != null}">
+							<a class="btn btn-primary" href="#"
+							   role="button">Acheter
+							</a>
+							</c:if>
+						</td>
 					</tr>
 			</tbody>
 		</table>
