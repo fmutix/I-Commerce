@@ -33,7 +33,6 @@ public class Controller extends HttpServlet {
 			  throws ServletException, IOException, ClassNotFoundException {
 		String nextPage = "index.jsp";
 		String state = request.getParameter("state");
-		
 		if(state == null){
 			loadCookie(request, response);
 			if(!isLogged(request)){
@@ -62,6 +61,7 @@ public class Controller extends HttpServlet {
 		
 		DbManager db = new DbManager();
 		db.connect();
+		db.getType();
 		switch(state){
 			
 			case "signup":{

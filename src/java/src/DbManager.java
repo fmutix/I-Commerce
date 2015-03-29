@@ -223,15 +223,31 @@ public class DbManager {
 		return member;
 	}
 	
-	public void getCategory(){
+	public void getType(){
 		try{
-			String query = "select category from APP.ITEM group by category";
+			String query = "select type from APP.ITEM group by type";
 			STMT = DB.createStatement();
 			ResultSet rs = STMT.executeQuery(query);
 			while(rs.next()){
-				System.out.println(rs.getString("category"));
+				String type = rs.getString("type");
+				System.out.println(type);
+				getCategory(type);
+				System.out.println();
 			}
 		}catch (SQLException ex){
+			Logger.getLogger(DbManager.class.getName()).log(Level.SEVERE, null, ex);
+		}
+	}
+	
+	public void getCategory(String type){
+		try {
+			String query = "select category from APP.ITEM where type='"+type+"' group by category";
+			STMT = DB.createStatement();
+			ResultSet rs = STMT.executeQuery(query);
+			while(rs.next()){
+				System.out.println("\t" + rs.getString("category"));
+			}
+		} catch (SQLException ex) {
 			Logger.getLogger(DbManager.class.getName()).log(Level.SEVERE, null, ex);
 		}
 	}
