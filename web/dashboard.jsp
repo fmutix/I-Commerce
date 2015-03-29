@@ -21,7 +21,7 @@
 				</tr>
 			</thead>
 			<tbody>
-				<jsp:useBean id="itemlist" class="bean.ItemList" scope="session"/>
+			<jsp:useBean id="itemlist" class="bean.ItemList" scope="session"/>
 			<c:forEach var="item" items="${itemlist.itemList}">
 				<tr>
 					<td><img src="${item.value.path}" /></td>

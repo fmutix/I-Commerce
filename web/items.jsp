@@ -23,22 +23,7 @@
 		<%@ include file="toolbar.jsp" %>
 		<div class="container-fluid">
 			<div class="row">
-				<div class="col-sm-3 col-md-2 sidebar">
-					<ul class="nav nav-sidebar">
-						<li><a href="index.html?state=type&type=Tête">Tête</a></li>
-						<li><a href="index.html?state=category&category=Casque">Casque</a></li>
-						<li><a href="index.html?state=category&category=Chapeau">Chapeau</a></li>
-						<li><a href="index.html?state=category&category=Ruban">Ruban</a></li>
-					</ul>
-					<ul class="nav nav-sidebar">
-						<li><a href="index.html?state=type&type=Corps">Corps</a></li>
-						<li><a href="index.html?state=category&category=Armure">Armure</a></li>
-						<li><a href="index.html?state=category&category=Tunique">Tunique</a></li>
-						<li><a href="index.html?state=category&category=Buste">Buste</a></li>
-						<li><a href="index.html?state=category&category=Toge">Toge</a></li>
-					</ul>
-				</div>
-				<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+				<div class="col-md-10 col-md-offset-0 main">
 					<h2 class="sub-header">Liste des produits</h2>
 					<div class="table-responsive">
 						<table id="items-table" class="table table-striped">
