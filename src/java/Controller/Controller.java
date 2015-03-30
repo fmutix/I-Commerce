@@ -1,4 +1,4 @@
-package src;
+package Controller;
 
 import bean.Item;
 import bean.ItemList;
@@ -17,6 +17,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import src.DbManager;
+import src.Hasher;
 
 public class Controller extends HttpServlet {
 	
@@ -35,7 +37,13 @@ public class Controller extends HttpServlet {
 		String nextPage = "index.jsp";
 		String state = request.getParameter("state");
 		if(state == null){
-			loadCookie(request, response);
+			if(searchCookie(request.getCookies(), "user") != null){
+				RequestDispatcher dispatcher = request.getRequestDispatcher("/Returner");
+				dispatcher.include(request, response);
+			}else{
+				RequestDispatcher dispatcher = request.getRequestDispatcher("/Anon");
+				dispatcher.include(request, response);
+			}
 			if(!isLogged(request)){
 				nextPage = "portal.jsp";
 			}else{
@@ -50,10 +58,10 @@ public class Controller extends HttpServlet {
 			HttpSession session = request.getSession();
 			
 			ShoppingCart cart = (ShoppingCart) session.getAttribute("shoppingcart");
-				if(cart == null){
-					cart = new ShoppingCart();
-					cart.setShoppingCart(new HashMap<String, ShoppingCartItem>());
-				}
+			if(cart == null){
+				cart = new ShoppingCart();
+				cart.setShoppingCart(new HashMap<String, ShoppingCartItem>());
+			}
 			
 			RequestDispatcher rd = request.getRequestDispatcher(nextPage);
 			rd.forward(request, response);
@@ -133,7 +141,7 @@ public class Controller extends HttpServlet {
 				request.getSession().setAttribute("itemlist", itemList);
 			}
 			break;
-			
+				
 			case "panier":{
 				String actionCart = request.getParameter("actioncart");
 				Member member = new Member();
@@ -160,7 +168,7 @@ public class Controller extends HttpServlet {
 				
 			}
 			break;
-			
+				
 			case "addCart":{
 				HttpSession session = request.getSession();
 				
@@ -185,7 +193,7 @@ public class Controller extends HttpServlet {
 				session.setAttribute("shoppingcart", cart);
 			}
 			break;
-			
+				
 			case "minusCart":{
 				HttpSession session = request.getSession();
 				
@@ -207,7 +215,7 @@ public class Controller extends HttpServlet {
 				session.setAttribute("shoppingcart", cart);
 			}
 			break;
-			
+				
 			case "buy":{
 				HttpSession session = request.getSession();
 				
@@ -221,7 +229,7 @@ public class Controller extends HttpServlet {
 				nextPage = "buy.jsp";
 			}
 			break;
-			
+				
 			case "browse":{
 				ItemList itemList = new ItemList();
 				itemList.setItemList(db.selectItems());
@@ -236,18 +244,6 @@ public class Controller extends HttpServlet {
 		db.close();
 		RequestDispatcher rd = request.getRequestDispatcher(nextPage);
 		rd.forward(request, response);
-	}
-	/**
-	 * load information from cookie to bean
-	 * @param request
-	 * @param response
-	 */
-	private void loadCookie(HttpServletRequest request, HttpServletResponse response){
-		Cookie cookieList[] = request.getCookies();
-		Cookie userCookie = searchCookie(cookieList, "user");
-		if(userCookie != null){
-			request.getSession().setAttribute("user", new Member());
-		}
 	}
 	
 	private Cookie searchCookie(Cookie cookieList[], String cookieName){
