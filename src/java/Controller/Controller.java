@@ -63,6 +63,18 @@ public class Controller extends HttpServlet {
 				user.setPassword(Hasher.digest(password));
 				user.setEmail(request.getParameter("email"));
 				user.setGuild(request.getParameter("guild").equals("Oui"));
+				if(db.getMember(user.getName()) != null){
+					if(user.getName().equals(db.getMember(user.getName()).getName())){
+						if(db.getMember(user.getName()).getEmail() != null){
+							if(user.getEmail().equals(db.getMember(user.getName()).getEmail())){
+								request.setAttribute("connect", "signuperror");
+								RequestDispatcher dispatcher = request.getRequestDispatcher("/Anonymous");
+								dispatcher.forward(request, response);
+								return;
+							}	
+						}
+					}
+				}
 				request.getSession().setAttribute("user", user);
 				db.insertMember(user);
 			}
@@ -80,6 +92,7 @@ public class Controller extends HttpServlet {
 					dispatcher.forward(request, response);
 					return;
 				}else{
+					request.setAttribute("connect", "loginerror");
 					RequestDispatcher dispatcher = request.getRequestDispatcher("/Anonymous");
 					dispatcher.forward(request, response);
 					return;

@@ -20,6 +20,20 @@
 				<li data-target="#myCarousel" data-slide-to="1"></li>
 				<li data-target="#myCarousel" data-slide-to="2"></li>
 			</ol>
+			<c:if test="${connect == 'loginerror'}">
+				<div class="alert alert-danger" role="alert">
+					<span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+					<span class="sr-only">Erreur: </span>
+					Nom d'utilisateur ou mot de passe erroné.
+				</div>
+			</c:if>
+			<c:if test="${connect == 'signuperror'}">
+				<div class="alert alert-danger" role="alert">
+					<span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+					<span class="sr-only">Erreur: </span>
+					Nom d'utilisateur ou email déjà existant.
+				</div>
+			</c:if>
 			<div class="carousel-inner" role="listbox">
 				<div class="item active">
 					<div class="container">
