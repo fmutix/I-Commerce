@@ -48,17 +48,6 @@ public class Controller extends HttpServlet {
 				dispatcher.forward(request, response);
 				return;
 			}
-			
-//			HttpSession session = request.getSession();
-//			ShoppingCart cart = (ShoppingCart) session.getAttribute("shoppingcart");
-//			if(cart == null){
-//				cart = new ShoppingCart();
-//				cart.setShoppingCart(new HashMap<String, ShoppingCartItem>());
-//			}
-//
-//			RequestDispatcher rd = request.getRequestDispatcher(nextPage);
-//			rd.forward(request, response);
-//			return;
 		}
 		
 		DbManager db = new DbManager();
@@ -105,16 +94,8 @@ public class Controller extends HttpServlet {
 				}
 				
 				HttpSession session = request.getSession();
-				
-//				ShoppingCart cart = (ShoppingCart) session.getAttribute("shoppingcart");
-//				if(cart == null){
-//					cart = new ShoppingCart();
-//					cart.setShoppingCart(new HashMap<String, ShoppingCartItem>());
-//				}
-//				cart.getShoppingCart().clear();
 				session.setAttribute("shoppingcart", null);
-				
-				request.getSession().setAttribute("user", null);
+				session.setAttribute("user", null);
 				nextPage = "portal.jsp";
 			}
 			break;
