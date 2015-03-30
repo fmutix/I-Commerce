@@ -123,10 +123,8 @@ public class Controller extends HttpServlet {
 			break;
 				
 			case "category":{
-				String category = request.getParameter("category");
-				ItemList itemList = new ItemList();
-				itemList.setItemList(db.selectItemsByCategory(category));
-				request.getSession().setAttribute("itemlist", itemList);
+				RequestDispatcher dispatcher = request.getRequestDispatcher("/ItemList");
+				dispatcher.include(request, response);
 			}
 			break;
 				
