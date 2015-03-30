@@ -1,6 +1,8 @@
 package Controller;
 
+import bean.Item;
 import java.io.IOException;
+import java.util.HashMap;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.servlet.ServletException;
@@ -32,8 +34,21 @@ public class ItemList extends HttpServlet {
 		}catch (ClassNotFoundException ex){
 			Logger.getLogger(Returner.class.getName()).log(Level.SEVERE, null, ex);
 		}
+		String state = request.getParameter("state");
+		HashMap<String, Item> selectItems = null;
+		switch(state){
+			case "type":
+				String type = request.getParameter("type");
+				selectItems = db.selectItemsByType(type);
+				break;
+				
+			case "category":
+				String category = request.getParameter("category");
+				selectItems = db.selectItemsByCategory(category);
+				break;
+		}
 		bean.ItemList itemList = new bean.ItemList();
-		itemList.setItemList(db.selectItems());
+		itemList.setItemList(selectItems);
 		request.getSession().setAttribute("itemlist", itemList);
 		db.close();
 	}
