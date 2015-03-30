@@ -55,7 +55,7 @@ public class Controller extends HttpServlet {
 //				cart = new ShoppingCart();
 //				cart.setShoppingCart(new HashMap<String, ShoppingCartItem>());
 //			}
-//			
+//
 //			RequestDispatcher rd = request.getRequestDispatcher(nextPage);
 //			rd.forward(request, response);
 //			return;
@@ -63,9 +63,7 @@ public class Controller extends HttpServlet {
 		
 		DbManager db = new DbManager();
 		db.connect();
-		db.getType();
 		switch(state){
-			
 			case "signup":{
 				Member user = new Member();
 				user.setName(request.getParameter("name"));
@@ -95,7 +93,7 @@ public class Controller extends HttpServlet {
 					return;
 				}
 			}
-				
+			
 			case "logout":{
 				Cookie userCookie = searchCookie(request.getCookies(), "user");
 				if(userCookie != null){
@@ -119,10 +117,8 @@ public class Controller extends HttpServlet {
 			break;
 				
 			case "type":{
-				String type = request.getParameter("type");
-				ItemList itemList = new ItemList();
-				itemList.setItemList(db.selectItemsByType(type));
-				request.getSession().setAttribute("itemlist", itemList);
+				RequestDispatcher dispatcher = request.getRequestDispatcher("/ItemList");
+				dispatcher.include(request, response);
 			}
 			break;
 				
@@ -229,7 +225,7 @@ public class Controller extends HttpServlet {
 				nextPage = "items.jsp";
 			}
 		}
-		
+		db.connect();
 		Types navBar = db.getType();
 		request.getSession().setAttribute("navBar", navBar);
 		
