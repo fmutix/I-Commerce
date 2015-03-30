@@ -13,8 +13,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-@WebServlet(name = "Anon", urlPatterns = {"/Anon"})
-public class Anon extends HttpServlet {
+@WebServlet(name = "Anonymous", urlPatterns = {"/Anonymous"})
+public class Anonymous extends HttpServlet {
 	/**
 	 * Processes requests for both HTTP <code>GET</code> and <code>POST</code> methods.
 	 *

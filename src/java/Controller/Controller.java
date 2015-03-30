@@ -44,7 +44,7 @@ public class Controller extends HttpServlet {
 				dispatcher.forward(request, response);
 				return;
 			}else{
-				RequestDispatcher dispatcher = request.getRequestDispatcher("/Anon");
+				RequestDispatcher dispatcher = request.getRequestDispatcher("/Anonymous");
 				dispatcher.forward(request, response);
 				return;
 			}
@@ -80,7 +80,7 @@ public class Controller extends HttpServlet {
 					dispatcher.forward(request, response);
 					return;
 				}else{
-					RequestDispatcher dispatcher = request.getRequestDispatcher("/Anon");
+					RequestDispatcher dispatcher = request.getRequestDispatcher("/Anonymous");
 					dispatcher.forward(request, response);
 					return;
 				}
@@ -95,7 +95,7 @@ public class Controller extends HttpServlet {
 				HttpSession session = request.getSession();
 				session.setAttribute("shoppingcart", null);
 				session.setAttribute("user", null);
-				RequestDispatcher dispatcher = request.getRequestDispatcher("/Anon");
+				RequestDispatcher dispatcher = request.getRequestDispatcher("/Anonymous");
 				dispatcher.forward(request, response);
 				return;
 			}
