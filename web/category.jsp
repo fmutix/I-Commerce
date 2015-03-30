@@ -10,9 +10,6 @@
 </form>
 
 <div class="col-sm-3 col-md-2 sidebar">
-	<ul class="nav nav-sidebar">
-		<li><a href="index.html?state=panier">Panier</a></li>
-	</ul>
 	<c:forEach var="type" items="${navBar.list}">
 	<ul class="nav nav-sidebar">
 		<li>
