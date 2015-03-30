@@ -1,5 +1,4 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<!DOCTYPE html>
 <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
 	<h2 class="sub-header">Liste des produits</h2>
 	<div class="table-responsive">
@@ -36,8 +35,8 @@
 					<td>${item.value.jump}</td>
 					<td>${item.value.evasion}</td>
 					<td>
-						<a class="btn btn-primary" href="index.html?state=addCart&itemname=${item.value.name}" role="button">+</a> 
-						<a class="btn btn-primary" href="index.html?state=minusCart&itemname=${item.value.name}" role="button">-</a>
+						<a class="btn btn-primary" href="#" role="button" onclick='$.post("Cart",{action:"addCart", itemname:"${item.value.name}"});'>+</a>
+						<a class="btn btn-primary" href="#" role="button" onclick='$.post("Cart",{action:"minusCart", itemname:"${item.value.name}"});'>-</a>
 					</td>
 				</tr>
 			</c:forEach>

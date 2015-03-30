@@ -2,7 +2,7 @@ DROP TABLE Member;
 DROP TABLE Item;
 
 CREATE TABLE Member(
-	Name VARCHAR(20) NOT NULL,
+	Name VARCHAR(20) UNIQUE NOT NULL,
 	Password CHAR(128) NOT NULL,
 	Email VARCHAR(255) NOT NULL,
 	Guild BOOLEAN NOT NULL,
@@ -555,80 +555,80 @@ INSERT INTO
 
 INSERT INTO 
 	APP.ITEM (Name,Type,Category,Attack,Price,Path)
-	VALUES ('Arme Aiot', 'Arme', 'Arme', 27, 1000, 'res/img/objets/obj_364.gif');
+	VALUES ('Arme Aiot', 'Arme', 'Pistolet', 27, 1000, 'res/img/objets/obj_364.gif');
 INSERT INTO 
 	APP.ITEM (Name,Type,Category,Attack,Price,Path)
-	VALUES ('Canon d''argent', 'Arme', 'Arme', 31, 1500, 'res/img/objets/obj_365.gif');
+	VALUES ('Canon d''argent', 'Arme', 'Pistolet', 31, 1500, 'res/img/objets/obj_365.gif');
 INSERT INTO 
 	APP.ITEM (Name,Type,Category,Attack,Price,Path)
-	VALUES ('Arme émeute', 'Arme', 'Arme', 31, 2500, 'res/img/objets/obj_366.gif');
+	VALUES ('Arme émeute', 'Arme', 'Pistolet', 31, 2500, 'res/img/objets/obj_366.gif');
 INSERT INTO 
 	APP.ITEM (Name,Type,Category,Attack,Price,Path)
-	VALUES ('Fusil chaos', 'Arme', 'Arme', 33, 4000, 'res/img/objets/obj_367.gif');
+	VALUES ('Fusil chaos', 'Arme', 'Pistolet', 33, 4000, 'res/img/objets/obj_367.gif');
 INSERT INTO 
 	APP.ITEM (Name,Type,Category,Attack,Price,Path)
-	VALUES ('Arme perdue', 'Arme', 'Arme', 31, 1200, 'res/img/objets/obj_368.gif');
+	VALUES ('Arme perdue', 'Arme', 'Pistolet', 31, 1200, 'res/img/objets/obj_368.gif');
 INSERT INTO 
 	APP.ITEM (Name,Type,Category,Attack,Price,Path)
-	VALUES ('Ransei', 'Arme', 'Arme', 33, 2000, 'res/img/objets/obj_369.gif');
+	VALUES ('Ransei', 'Arme', 'Pistolet', 33, 2000, 'res/img/objets/obj_369.gif');
 INSERT INTO 
 	APP.ITEM (Name,Type,Category,Attack,Price,Path)
-	VALUES ('Arme Giot', 'Arme', 'Arme', 37, 3000, 'res/img/objets/obj_370.gif');
+	VALUES ('Arme Giot', 'Arme', 'Pistolet', 37, 3000, 'res/img/objets/obj_370.gif');
 INSERT INTO 
 	APP.ITEM (Name,Type,Category,Attack,Price,Path)
-	VALUES ('Longbarrel', 'Arme', 'Arme', 39, 6000, 'res/img/objets/obj_371.gif');
+	VALUES ('Longbarrel', 'Arme', 'Pistolet', 39, 6000, 'res/img/objets/obj_371.gif');
 INSERT INTO 
 	APP.ITEM (Name,Type,Category,Attack,Price,Path)
-	VALUES ('Outsider', 'Arme', 'Arme', 41, 8000, 'res/img/objets/obj_372.gif');
+	VALUES ('Outsider', 'Arme', 'Pistolet', 41, 8000, 'res/img/objets/obj_372.gif');
 INSERT INTO 
 	APP.ITEM (Name,Type,Category,Attack,Price,Path)
-	VALUES ('Arme mythril', 'Arme', 'Arme', 32, 2000, 'res/img/objets/obj_373.gif');
+	VALUES ('Arme mythril', 'Arme', 'Pistolet', 32, 2000, 'res/img/objets/obj_373.gif');
 INSERT INTO 
 	APP.ITEM (Name,Type,Category,Attack,Price,Path)
-	VALUES ('Bindsnipe', 'Arme', 'Arme', 47, 10000, 'res/img/objets/obj_374.gif');
+	VALUES ('Bindsnipe', 'Arme', 'Pistolet', 47, 10000, 'res/img/objets/obj_374.gif');
 INSERT INTO 
 	APP.ITEM (Name,Type,Category,Attack,Price,Path)
-	VALUES ('Arme d''appel', 'Arme', 'Arme', 59, 15000, 'res/img/objets/obj_375.gif');
-/* Epée */
+	VALUES ('Arme d''appel', 'Arme', 'Pistolet', 59, 15000, 'res/img/objets/obj_375.gif');
+/* Epee */
 INSERT INTO
 	APP.ITEM (Name,Type,Category,Price,Attack,Path)
-	VALUES ('Epée courte', 'Arme', 'Epée', 150, 25, 'res/img/objets/obj_3.gif');
+	VALUES ('Epee courte', 'Arme', 'Epee', 150, 25, 'res/img/objets/obj_3.gif');
 INSERT INTO
 	APP.ITEM (Name,Type,Category,Price,Attack,Speed,Evasion,Path)
-	VALUES ('Epée argent', 'Arme', 'Epée', 450, 30, 2, 2, 'res/img/objets/obj_151.gif');
+	VALUES ('Epee argent', 'Arme', 'Epee', 450, 30, 2, 2, 'res/img/objets/obj_151.gif');
 INSERT INTO
 	APP.ITEM (Name,Type,Category,Price,Attack,Defense,Path)
-	VALUES ('Epée griffe', 'Arme', 'Epée', 800, 35, 5, 'res/img/objets/obj_152.gif');
+	VALUES ('Epee griffe', 'Arme', 'Epee', 800, 35, 5, 'res/img/objets/obj_152.gif');
 INSERT INTO
 	APP.ITEM (Name,Type,Category,Price,Attack,Path)
-	VALUES ('Epée filou', 'Arme', 'Epée', 1500, 39, 'res/img/objets/obj_153.gif');
+	VALUES ('Epee filou', 'Arme', 'Epee', 1500, 39, 'res/img/objets/obj_153.gif');
 INSERT INTO
 	APP.ITEM (Name,Type,Category,Price,Attack,Speed,Path)
-	VALUES ('Epée rafale', 'Arme', 'Epée', 500, 36, 1, 'res/img/objets/obj_154.gif');
+	VALUES ('Epee rafale', 'Arme', 'Epee', 500, 36, 1, 'res/img/objets/obj_154.gif');
 INSERT INTO
 	APP.ITEM (Name,Type,Category,Price,Attack,Path)
-	VALUES ('Epée vermeille', 'Arme', 'Epée', 1000, 18, 'res/img/objets/obj_155.gif');
+	VALUES ('Epee vermeille', 'Arme', 'Epee', 1000, 18, 'res/img/objets/obj_155.gif');
 INSERT INTO
 	APP.ITEM (Name,Type,Category,Price,Attack,Magic,Resistance,Path)
-	VALUES ('Raviveur', 'Arme', 'Epée', 2000, 40, 5, 5, 'res/img/objets/obj_156.gif');
+	VALUES ('Raviveur', 'Arme', 'Epee', 2000, 40, 5, 5, 'res/img/objets/obj_156.gif');
 INSERT INTO
 	APP.ITEM (Name,Type,Category,Price,Attack,Magic,Evasion,Path)
-	VALUES ('Vitanova', 'Arme', 'Epée', 4000, 38, 2, 2, 'res/img/objets/obj_157.gif');
+	VALUES ('Vitanova', 'Arme', 'Epee', 4000, 38, 2, 2, 'res/img/objets/obj_157.gif');
 INSERT INTO
 	APP.ITEM (Name,Type,Category,Price,Attack,Jump,Path)
-	VALUES ('Epée mythril', 'Arme', 'Epée', 2000, 33, 1, 'res/img/objets/obj_158.gif');
+	VALUES ('Epee mythril', 'Arme', 'Epee', 2000, 33, 1, 'res/img/objets/obj_158.gif');
 INSERT INTO
 	APP.ITEM (Name,Type,Category,Price,Attack,Defense,Resistance,Path)
-	VALUES ('Epée victoire', 'Arme', 'Epée', 500, 33, 10, 10, 'res/img/objets/obj_159.gif');
+	VALUES ('Epee victoire', 'Arme', 'Epee', 500, 33, 10, 10, 'res/img/objets/obj_159.gif');
 INSERT INTO
 	APP.ITEM (Name,Type,Category,Price,Attack,Defense,Resistance,Evasion,Path)
-	VALUES ('Epée bulbe', 'Arme', 'Epée', 500, 29, 5, 5, 10, 'res/img/objets/obj_160.gif');
+	VALUES ('Epee bulbe', 'Arme', 'Epee', 500, 29, 5, 5, 10, 'res/img/objets/obj_160.gif');
 INSERT INTO
 	APP.ITEM (Name,Type,Category,Price,Attack,Path)
-	VALUES ('Chijiraden', 'Arme', 'Epée', 500, 65, 'res/img/objets/obj_161.gif');
+	VALUES ('Chijiraden', 'Arme', 'Epee', 500, 65, 'res/img/objets/obj_161.gif');
 INSERT INTO
 	APP.ITEM (Name,Type,Category,Price,Attack, Magic,Path)
-	VALUES ('Epée de glace', 'Arme', 'Epée', 500, 41, 5, 'res/img/objets/obj_162.gif');
+	VALUES ('Epee de glace', 'Arme', 'Epee', 500, 41, 5, 'res/img/objets/obj_162.gif');
 
 /* Griffes */
 
