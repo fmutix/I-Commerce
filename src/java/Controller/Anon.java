@@ -26,9 +26,7 @@ public class Anon extends HttpServlet {
 	protected void processRequest(HttpServletRequest request, HttpServletResponse response)
 			  throws ServletException, IOException {
 		RequestDispatcher dispatcher = request.getRequestDispatcher("portal.jsp");
-		System.err.println("Anon -> portal");
 		dispatcher.forward(request, response);
-		System.err.println("nyaa");
 	}
 	
 	// <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
