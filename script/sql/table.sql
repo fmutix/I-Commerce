@@ -18,10 +18,10 @@ CREATE TABLE Item(
 	Defense NUMERIC(2,0),
 	Magic NUMERIC(2,0),
 	Resistance NUMERIC(2,0),
-	Speed NUMERIC(1,0),
-	Move NUMERIC(1,0),
-	Jump NUMERIC(1,0),
-	Evasion NUMERIC(1,0),
+	Speed NUMERIC(2,0),
+	Move NUMERIC(2,0),
+	Jump NUMERIC(2,0),
+	Evasion NUMERIC(2,0),
 	Path VARCHAR(255),
 	PRIMARY KEY(Name)
 );
