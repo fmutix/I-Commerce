@@ -112,7 +112,8 @@ public class Controller extends HttpServlet {
 				dispatcher.forward(request, response);
 				return;
 			}
-
+			
+			case "default":
 			case "type":
 			case "category":{
 				RequestDispatcher dispatcher = request.getRequestDispatcher("/ItemList");

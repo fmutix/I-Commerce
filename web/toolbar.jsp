@@ -9,7 +9,12 @@
 				<span class="icon-bar"></span>
 				<span class="icon-bar"></span>
 			</button>
-			<a class="navbar-brand" href="index.html">Ivalice Commerce</a>
+			<form id="icommerce" action="index.html" method="post">
+				<input name='state' value="default" type='hidden'"/>
+				<a class="navbar-brand" href="#" onclick='$("#icommerce").submit()'>
+					Ivalice Commerce
+				</a>
+			</form>
 		</div>
 		<div id="navbar" class="navbar-collapse collapse">
 			<ul class="nav navbar-nav navbar-right">
