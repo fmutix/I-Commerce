@@ -38,6 +38,8 @@ public class Controller extends HttpServlet {
 		String state = request.getParameter("state");
 		if(state == null){
 			if(searchCookie(request.getCookies(), "user") != null){
+				request.setAttribute("state", "login");
+				System.err.println(request.getParameter("state"));
 				RequestDispatcher dispatcher = request.getRequestDispatcher("/Returner");
 				dispatcher.forward(request, response);
 				return;

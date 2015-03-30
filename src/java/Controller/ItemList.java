@@ -35,6 +35,7 @@ public class ItemList extends HttpServlet {
 			Logger.getLogger(Returner.class.getName()).log(Level.SEVERE, null, ex);
 		}
 		String state = request.getParameter("state");
+		state = state == null ? "login" : state;
 		HashMap<String, Item> selectItems = null;
 		switch(state){
 			case "type":
