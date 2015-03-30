@@ -39,33 +39,24 @@ public class Controller extends HttpServlet {
 		if(state == null){
 			if(searchCookie(request.getCookies(), "user") != null){
 				RequestDispatcher dispatcher = request.getRequestDispatcher("/Returner");
-				dispatcher.include(request, response);
+				dispatcher.forward(request, response);
+				return;
 			}else{
 				RequestDispatcher dispatcher = request.getRequestDispatcher("/Anon");
-				dispatcher.include(request, response);
-			}
-			if(!isLogged(request)){
-				nextPage = "portal.jsp";
-			}else{
-				DbManager db = new DbManager();
-				db.connect();
-				ItemList itemList = new ItemList();
-				itemList.setItemList(db.selectItems());
-				request.getSession().setAttribute("itemlist", itemList);
-				db.close();
+				dispatcher.forward(request, response);
+				return;
 			}
 			
-			HttpSession session = request.getSession();
-			
-			ShoppingCart cart = (ShoppingCart) session.getAttribute("shoppingcart");
-			if(cart == null){
-				cart = new ShoppingCart();
-				cart.setShoppingCart(new HashMap<String, ShoppingCartItem>());
-			}
-			
-			RequestDispatcher rd = request.getRequestDispatcher(nextPage);
-			rd.forward(request, response);
-			return;
+//			HttpSession session = request.getSession();
+//			ShoppingCart cart = (ShoppingCart) session.getAttribute("shoppingcart");
+//			if(cart == null){
+//				cart = new ShoppingCart();
+//				cart.setShoppingCart(new HashMap<String, ShoppingCartItem>());
+//			}
+//			
+//			RequestDispatcher rd = request.getRequestDispatcher(nextPage);
+//			rd.forward(request, response);
+//			return;
 		}
 		
 		DbManager db = new DbManager();
@@ -98,6 +89,7 @@ public class Controller extends HttpServlet {
 					Cookie userCookie = new Cookie("user", name);
 					userCookie.setMaxAge(30*60);
 					response.addCookie(userCookie);
+					System.err.println("miaou");
 				}else{
 					nextPage = "portal.jsp";
 				}

@@ -20,10 +20,13 @@ public class Returner extends HttpServlet{
 	 * @throws ServletException if a servlet-specific error occurs
 	 * @throws IOException if an I/O error occurs
 	 */
-	protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-			  throws ServletException, IOException{
+	protected void processRequest(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
 		loadCookie(request, response);
-		RequestDispatcher dispatcher = request.getRequestDispatcher("index.jsp");
+		RequestDispatcher dispatcher = request.getRequestDispatcher("/ItemList");
+		System.err.println("Returner -> itemList");
+		dispatcher.include(request, response);
+		dispatcher = request.getRequestDispatcher("index.jsp");
+		System.err.println("Returner -> index");
 		dispatcher.forward(request, response);
 	}
 	
