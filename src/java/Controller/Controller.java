@@ -272,6 +272,7 @@ public class Controller extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			  throws ServletException, IOException {
 		try {
+			response.setContentType("text/html;charset=UTF-8");
 			processRequest(request, response);
 		} catch (ClassNotFoundException ex) {
 			Logger.getLogger(Controller.class.getName()).log(Level.SEVERE, null, ex);
@@ -290,6 +291,7 @@ public class Controller extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			  throws ServletException, IOException {
 		try {
+			response.setContentType("text/html;charset=UTF-8");
 			processRequest(request, response);
 		} catch (ClassNotFoundException ex) {
 			Logger.getLogger(Controller.class.getName()).log(Level.SEVERE, null, ex);

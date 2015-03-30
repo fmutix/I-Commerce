@@ -1,12 +1,5 @@
-<%-- 
-    Document   : toolbar
-    Created on : Mar 26, 2015, 1:30:49 PM
-    Author     : mute
---%>
-	
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<!DOCTYPE html>
 <nav class="navbar navbar-inverse navbar-fixed-top">
     <div class="container-fluid">
         <div class="navbar-header">
