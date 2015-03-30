@@ -92,26 +92,20 @@ public class Controller extends HttpServlet {
 					userCookie.setMaxAge(0);
 					response.addCookie(userCookie);
 				}
-				
 				HttpSession session = request.getSession();
 				session.setAttribute("shoppingcart", null);
 				session.setAttribute("user", null);
-				nextPage = "portal.jsp";
+				RequestDispatcher dispatcher = request.getRequestDispatcher("/Anon");
+				dispatcher.forward(request, response);
+				return;
 			}
-			break;
 
-			case "type":{
-				RequestDispatcher dispatcher = request.getRequestDispatcher("/ItemList");
-				dispatcher.include(request, response);
-			}
-			break;
-				
+			case "type":
 			case "category":{
 				RequestDispatcher dispatcher = request.getRequestDispatcher("/ItemList");
 				dispatcher.include(request, response);
 			}
-			break;
-				
+
 			case "panier":{
 				String actionCart = request.getParameter("actioncart");
 				Member member = new Member();
