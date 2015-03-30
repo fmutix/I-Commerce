@@ -20,10 +20,10 @@ INSERT INTO
 	VALUES ('Bouclier Aegis', 'Bouclier', 'Bouclier', 3000, 5, 5, 10, 'res/img/objets/obj_57.gif');
 INSERT INTO 
 	APP.ITEM (Name,Type,Category,Price,Defense,Resistance,Evasion,Path)
-	VALUES ('Bouclier Genji', 'Bouclier', 'Bouclier', 12000, 10, ,7, 10, 'res/img/objets/obj_58.gif');
+	VALUES ('Bouclier Genji', 'Bouclier', 'Bouclier', 12000, 10, 7, 10, 'res/img/objets/obj_58.gif');
 INSERT INTO 
 	APP.ITEM (Name,Type,Category,Price,Defense,Resistance,Evasion,Path)
-	VALUES ('Bouclier sacré', 'Bouclier', 'Bouclier', 6000, 5, ,5, 10, 'res/img/objets/obj_59.gif');
+	VALUES ('Bouclier sacré', 'Bouclier', 'Bouclier', 6000, 5, 5, 10, 'res/img/objets/obj_59.gif');
 INSERT INTO 
 	APP.ITEM (Name,Type,Category,Price,Resistance,Evasion,Path)
 	VALUES ('Bouclier Shijin', 'Bouclier', 'Bouclier', 4000, 10, 7, 'res/img/objets/obj_60.gif');
