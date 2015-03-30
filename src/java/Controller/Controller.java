@@ -79,24 +79,22 @@ public class Controller extends HttpServlet {
 			break;
 				
 			case "login":{
-				ItemList itemList = new ItemList();
-				itemList.setItemList(db.selectItems());
-				request.getSession().setAttribute("itemlist", itemList);
 				String name = request.getParameter("name");
 				String password = request.getParameter("password");
 				Member user = db.getMember(name);
-				
 				if(user != null && user.getPassword().equals(Hasher.digest(password))){
-					request.getSession().setAttribute("user", user);
 					Cookie userCookie = new Cookie("user", name);
 					userCookie.setMaxAge(30*60);
 					response.addCookie(userCookie);
-					System.err.println("miaou");
+					RequestDispatcher dispatcher = request.getRequestDispatcher("/Returner");
+					dispatcher.forward(request, response);
+					return;
 				}else{
-					nextPage = "portal.jsp";
+					RequestDispatcher dispatcher = request.getRequestDispatcher("/Anon");
+					dispatcher.forward(request, response);
+					return;
 				}
 			}
-			break;
 				
 			case "logout":{
 				Cookie userCookie = searchCookie(request.getCookies(), "user");
