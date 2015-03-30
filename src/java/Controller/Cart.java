@@ -49,9 +49,8 @@ public class Cart extends HttpServlet {
 					cart.setShoppingCart(new HashMap<String, ShoppingCartItem>());
 				}
 				if(!cart.getShoppingCart().containsKey(itemName)){
-					Item item = new Item();
 					ShoppingCartItem shoppingCartItem = new ShoppingCartItem();
-					item = db.getItem(itemName);
+					Item item = db.getItem(itemName);
 					shoppingCartItem.setItem(item);
 					shoppingCartItem.setQuantity(1);
 					cart.getShoppingCart().put(itemName, shoppingCartItem);
@@ -111,6 +110,7 @@ public class Cart extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			  throws ServletException, IOException {
+		request.setCharacterEncoding("UTF-8");
 		response.setContentType("text/html;charset=UTF-8");
 		processRequest(request, response);
 	}
@@ -126,6 +126,7 @@ public class Cart extends HttpServlet {
 	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			  throws ServletException, IOException {
+		request.setCharacterEncoding("UTF-8");
 		response.setContentType("text/html;charset=UTF-8");
 		processRequest(request, response);
 	}
