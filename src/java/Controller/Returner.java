@@ -1,7 +1,10 @@
 package Controller;
 
 import bean.Member;
+import bean.ShoppingCart;
+import bean.ShoppingCartItem;
 import java.io.IOException;
+import java.util.HashMap;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -24,6 +27,10 @@ public class Returner extends HttpServlet{
 		loadCookie(request, response);
 		Member user = new Member();
 		request.getSession().setAttribute("user", user);
+		ShoppingCart cart = new ShoppingCart();
+		cart.setShoppingCart(new HashMap<String, ShoppingCartItem>());
+		request.getSession().setAttribute("shoppingcart",cart);
+		
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/ItemList");
 		dispatcher.include(request, response);
 		dispatcher = request.getRequestDispatcher("index.jsp");
