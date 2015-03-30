@@ -7,6 +7,7 @@ import java.io.IOException;
 import java.util.HashMap;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -33,8 +34,7 @@ public class Cart extends HttpServlet {
 	protected void processRequest(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String action = request.getParameter("action");
 		String itemName = request.getParameter("itemname");
-		System.err.println("Cart: " + action);
-		System.err.println("Cart: " + itemName);
+		HttpSession session = request.getSession();
 		DbManager db = new DbManager();
 		try {
 			db.connect();
@@ -43,8 +43,6 @@ public class Cart extends HttpServlet {
 		}
 		switch(action){
 			case "addCart":{
-				HttpSession session = request.getSession();
-				
 				ShoppingCart cart = (ShoppingCart) session.getAttribute("shoppingcart");
 				if(cart == null){
 					cart = new ShoppingCart();
@@ -67,7 +65,6 @@ public class Cart extends HttpServlet {
 			break;
 				
 			case "minusCart":{
-				HttpSession session = request.getSession();
 				
 				ShoppingCart cart = (ShoppingCart) session.getAttribute("shoppingcart");
 				if(cart == null){
@@ -86,7 +83,23 @@ public class Cart extends HttpServlet {
 				session.setAttribute("shoppingcart", cart);
 			}
 			break;
+				
+			case "rmCart":{
+				ShoppingCart cart = (ShoppingCart) session.getAttribute("shoppingcart");
+				if(cart == null){
+					cart = new ShoppingCart();
+					cart.setShoppingCart(new HashMap<String, ShoppingCartItem>());
+				}
+				if(cart.getShoppingCart().containsKey(itemName)){
+					cart.getShoppingCart().remove(itemName);
+				}
+				session.setAttribute("shoppingcart", cart);
+			}
+			break;
 		}
+		db.close();
+		RequestDispatcher dispatcher = request.getRequestDispatcher("index.html?state=panier");
+		dispatcher.forward(request, response);
 	}
 	// <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
 	/**

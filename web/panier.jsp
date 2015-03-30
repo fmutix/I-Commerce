@@ -41,10 +41,9 @@
 						<td>${shoppingcartitem.value.item.evasion}</td>
 						<td>${shoppingcartitem.value.quantity}</td>
 						<td>
-							<form action="index.html">
+							<form action="Cart" method="post">
 							   <button class="btn btn-lg btn-primary" type="submit">&#10008;</button>
-							   <input name="state" type="hidden" value="panier"/>
-							   <input name="actioncart" type="hidden" value="rmCart"/>
+							   <input name="action" type="hidden" value="rmCart"/>
 							   <input name="itemname" type="hidden" value="${shoppingcartitem.value.item.name}"/>
 							</form>
 						</td>
