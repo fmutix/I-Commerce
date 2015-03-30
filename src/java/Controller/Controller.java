@@ -105,6 +105,7 @@ public class Controller extends HttpServlet {
 				RequestDispatcher dispatcher = request.getRequestDispatcher("/ItemList");
 				dispatcher.include(request, response);
 			}
+			break;
 
 			case "buy":{
 				HttpSession session = request.getSession();

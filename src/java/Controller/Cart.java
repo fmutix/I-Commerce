@@ -65,7 +65,6 @@ public class Cart extends HttpServlet {
 			break;
 				
 			case "minusCart":{
-				
 				ShoppingCart cart = (ShoppingCart) session.getAttribute("shoppingcart");
 				if(cart == null){
 					cart = new ShoppingCart();
@@ -73,10 +72,9 @@ public class Cart extends HttpServlet {
 				}
 				if(cart.getShoppingCart().containsKey(itemName)){
 					int quantity = cart.getShoppingCart().get(itemName).getQuantity();
-					if(quantity > 0){
-						cart.getShoppingCart().get(itemName).setQuantity(quantity-1);
-					}
-					if(quantity == 0){
+					cart.getShoppingCart().get(itemName).setQuantity(quantity-1);
+					quantity = cart.getShoppingCart().get(itemName).getQuantity();
+					if(quantity <= 0){
 						cart.getShoppingCart().remove(itemName);
 					}
 				}
