@@ -37,7 +37,7 @@ public class Controller extends HttpServlet {
 		String nextPage = "index.jsp";
 		String state = request.getParameter("state");
 		if(state == null){
-			if(searchCookie(request.getCookies(), "user") != null){
+			if(searchCookie(request.getCookies(), "user") != null || request.getSession().getAttribute("user") != null){
 				request.setAttribute("state", "login");
 				System.err.println(request.getParameter("state"));
 				RequestDispatcher dispatcher = request.getRequestDispatcher("/Returner");
