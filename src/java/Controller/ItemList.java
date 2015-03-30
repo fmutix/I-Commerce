@@ -47,6 +47,10 @@ public class ItemList extends HttpServlet {
 				String category = request.getParameter("category");
 				selectItems = db.selectItemsByCategory(category);
 				break;
+			
+			default:
+				selectItems = db.selectItems();
+				break;
 		}
 		bean.ItemList itemList = new bean.ItemList();
 		itemList.setItemList(selectItems);
