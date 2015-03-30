@@ -12,13 +12,13 @@
 <div class="col-sm-3 col-md-2 sidebar">
 	<c:forEach var="type" items="${navBar.list}">
 	<ul class="nav nav-sidebar">
-		<li>
+		<li <c:if test="${param.type == type.key}">class="active"</c:if>>
 			<a href="#" onclick='$("#cat_type").val("${type.key}").parent().submit();'>
 				- ${type.key} -
 			</a>
 		</li>
 		<c:forEach var="category" items="${type.value.list}">
-		<li>
+		<li <c:if test="${param.category == category}">class="active"</c:if>>
 			<a href="#" onclick='$("#cat_category").val("${category}").parent().submit();'">
 				• ${category}
 			</a>
