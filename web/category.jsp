@@ -19,7 +19,7 @@
 		</li>
 		<c:forEach var="category" items="${type.value.list}">
 		<li <c:if test="${param.category == category}">class="active"</c:if>>
-			<a href="#" onclick='$("#cat_category").val("${category}").parent().submit();'">
+			<a href="#" onclick='$("#cat_category").val("${category}").parent().submit();'>
 				• ${category}
 			</a>
 		</li>
