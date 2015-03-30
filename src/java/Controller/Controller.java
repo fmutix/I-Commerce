@@ -63,6 +63,9 @@ public class Controller extends HttpServlet {
 		
 		DbManager db = new DbManager();
 		db.connect();
+		Types navBar = db.getType();
+		request.getSession().setAttribute("navBar", navBar);
+
 		switch(state){
 			case "signup":{
 				Member user = new Member();
@@ -103,19 +106,19 @@ public class Controller extends HttpServlet {
 				
 				HttpSession session = request.getSession();
 				
-				ShoppingCart cart = (ShoppingCart) session.getAttribute("shoppingcart");
-				if(cart == null){
-					cart = new ShoppingCart();
-					cart.setShoppingCart(new HashMap<String, ShoppingCartItem>());
-				}
-				cart.getShoppingCart().clear();
-				session.setAttribute("shoppingcart", cart);
+//				ShoppingCart cart = (ShoppingCart) session.getAttribute("shoppingcart");
+//				if(cart == null){
+//					cart = new ShoppingCart();
+//					cart.setShoppingCart(new HashMap<String, ShoppingCartItem>());
+//				}
+//				cart.getShoppingCart().clear();
+				session.setAttribute("shoppingcart", null);
 				
 				request.getSession().setAttribute("user", null);
 				nextPage = "portal.jsp";
 			}
 			break;
-				
+
 			case "type":{
 				RequestDispatcher dispatcher = request.getRequestDispatcher("/ItemList");
 				dispatcher.include(request, response);
@@ -223,10 +226,6 @@ public class Controller extends HttpServlet {
 				nextPage = "items.jsp";
 			}
 		}
-		db.connect();
-		Types navBar = db.getType();
-		request.getSession().setAttribute("navBar", navBar);
-		
 		db.close();
 		RequestDispatcher rd = request.getRequestDispatcher(nextPage);
 		rd.forward(request, response);
