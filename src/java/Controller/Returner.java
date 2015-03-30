@@ -22,6 +22,8 @@ public class Returner extends HttpServlet{
 	 */
 	protected void processRequest(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
 		loadCookie(request, response);
+		Member user = new Member();
+		request.getSession().setAttribute("user", user);
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/ItemList");
 		dispatcher.include(request, response);
 		dispatcher = request.getRequestDispatcher("index.jsp");
