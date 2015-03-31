@@ -1,0 +1,39 @@
+\section{Structure de base de données}
+
+La base de données contient deux tables : Member et Item. \\
+
+Member contient les données des utilisateurs fournis au moment de l'inscription. 
+La table se présente comme suivant :
+
+\begin{description}
+	\item[Name] VARCHAR(20) UNIQUE NOT NULL
+	\item[Password] CHAR(128) NOT NULL
+	\item[Email] VARCHAR(255) NOT NULL PRIMARY KEY
+	\item[Guild] BOOLEAN NOT NULL
+\end{description}
+
+Le mot de passe passe par un algorithme de hachage avant d'être stocké dans 
+la base de données. \\
+
+La table Item comporte toutes les informations concernants les produits à 
+vendre ainsi que le chemin de fichier vers l'image correspondant à chaque 
+produit.
+
+\begin{description}
+	\item[Name] VARCHAR(30) NOT NULL PRIMARY KEY
+	\item[Type] VARCHAR(30) NOT NULL
+	\item[Category] VARCHAR(30) NOT NULL
+	\item[Price] NUMERIC(7,0) NOT NULL
+	\item[Attack] NUMERIC(3,0) NOT NULL
+	\item[Defense] NUMERIC(3,0) NOT NULL
+	\item[Magic] NUMERIC(3,0) NOT NULL
+	\item[Resistance] NUMERIC(3,0) NOT NULL
+	\item[Speed] NUMERIC(3,0) NOT NULL
+	\item[Move] NUMERIC(3,0) NOT NULL
+	\item[Evasion] NUMERIC(3,0) NOT NULL
+	\item[Path] VARCHAR(255) NOT NULL
+\end{description}
+
+Le script pour créer les tables et les remplir se trouvent à 
+\href{https://github.com/fmutix/I-Commerce/tree/master/script}
+{https://github.com/fmutix/I-Commerce}
