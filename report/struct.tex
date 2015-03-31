@@ -1,3 +1,63 @@
 \section{Structure du projet}
 
+\subsection{Répertoires}
 
+Le projet se divise en deux grands répertoires principaux : le répertoire pour 
+les sources java et le répertoire pour les sources web.
+
+\begin{description}
+	\item[Web pages] \hfill \\
+		css \\
+		fonts \\
+		img \\
+		js \\
+		jsp
+	\item[Src] \hfill \\
+		controller \\
+		bean \\
+		src
+\end{description}
+
+\subsection{Navigation des pages web}
+
+L'ensemble des pages de navigation du site comporte un portail, une page 
+d'inscription, une page de connexion, une page listant tous les produits servant 
+de vitrine pour les utilisateurs non connectés et un panier. \\
+
+L'index est la page principale une fois l'utilisateur connecté. Elle permet de 
+navigeur dans les produits du sites et de faire des recherches filtrées par 
+type ou catégorie.
+
+D'autres fichiers jsp existants sont utilisés dans les pages de navigation en 
+tant que partie de page html à inclure car elles permettent de compléter des 
+contenus en fonction de la session utilisateur ou alors d'avoir des structures 
+présentent dans toutes les pages à include. Ceci permet une meilleur modularité 
+au niveau du développement.
+
+\subsection{Architecture MVC2}
+
+Pour programmer un site bien structuré et modulable, nous avons suivi le 
+design pattern MVC adapté pour un projet JEE. Ce dernier consite à séparer trois 
+entités : le Model, la View et le Controller. \\
+
+Le concept de base veut que le Controller se charge des modifications dans le 
+Model et d'actualiser la View. Le rôle du Model n'est que de stocker et de 
+fournir les procédés de modification de données au Controller. La View est ce 
+que voit les utilisateurs. Elle affiche l'interface graphique en fonction de ce 
+qu'a demandé le Controller et en fonction des données du Model. \\
+
+Dans le cadre des technologies JEE, il est souhaité que le Controller soit 
+implémenté par une Servlet unique qui sert d'aiguilleur vers les différentes 
+pages du site qui sont des View écrites en JSP. Il existe d'autres servlets 
+dans notre projet mais qui ne servent seulement à exécuter les requêtes 
+déléguées par le Controller.\\
+
+Le Model est représenté par des classes JavaBeans. Une classe JavaBean est une 
+classe Java suivant des directives strictes. Il ne doit pas avoir de 
+constructeur et ne doit contenir que les attributs, les getter et les setter. 
+Les Javabeans permettent de faciliter l'utilisation de la base de données. \\
+
+De manière générale, un navigateur commence par envoyer une requête au 
+Controller qui va rediriger l'utilisateur vers la View correspondante et si 
+besoin, utiliser le Model pour compléter le contenu de la View qui est renvoyée 
+en guise de réponse au navigateur.
