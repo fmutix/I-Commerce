@@ -1,0 +1,11 @@
+@startuml
+class Métier.Controller -> Métier.Vue
+Métier.Controller -r-> Données.DBManager
+Métier.Vue <- Métier.Modèle
+
+Données.DBManager -l-> Métier.Modèle
+
+Presentation.html -r-> Métier.Controller
+Métier.Vue -l-> Presentation.html 
+@enduml
+
