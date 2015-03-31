@@ -1,11 +1,18 @@
 @startuml
-class Métier.Controller -> Métier.Vue
-Métier.Controller -r-> Données.DBManager
-Métier.Vue <- Métier.Modèle
+package Métier{
+	Métier.Controller --> Métier.Vue
+	Métier.Controller --> Données.DBManager
+	Métier.Vue <-- Métier.Modèle
+}
 
-Données.DBManager -l-> Métier.Modèle
+package Données{
+	Données.DBManager --> Métier.Modèle
+	Données.DBManager --> Données.BDD
+}
 
-Presentation.html -r-> Métier.Controller
-Métier.Vue -l-> Presentation.html 
+package Présentation{
+	Présentation.html -u-> Métier.Controller
+	Présentation.html -u-> Métier.Vue
+}
 @enduml
 
